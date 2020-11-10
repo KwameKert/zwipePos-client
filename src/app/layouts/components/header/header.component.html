@@ -1,0 +1,62 @@
+<div class="topbar-main">
+    <div class="container-fluid">
+
+        <div class="logo">
+            <a routerLink="/admin/dashboard" class="logo">
+               ThinkSopht Labs
+            </a>
+
+        </div>
+        <!-- End Logo container-->
+
+
+        <div class="menu-extras topbar-custom">
+
+            <ul class="list-inline float-right mb-0">
+
+                <li class="menu-item list-inline-item">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle nav-link">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </li>
+
+                <li class="list-inline-item dropdown notification-list">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="false" aria-expanded="false">
+                       <div class="profile-link">
+                        <img src="/assets/images/avatar.jpg" alt="user" class="rounded-circle"> {{role}} <i class="md md-expand-more"></i>
+                       </div>
+                      
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
+                        <!-- item-->
+                        <span *ngFor="let link of profileLinks">
+                            <a [routerLink]="[link.url]" class="dropdown-item notify-item" (click)="updateTitle(link.name)" >
+                                <i [class]="link.icon"></i> <span>{{link.name}}</span>
+                            </a>
+                          
+                        </span>
+                        <a href="javascript:(void)" class="dropdown-item notify-item" (click)="logout()">
+                            <i ></i> <span>Logout</span>
+                        </a>
+                        
+
+                       
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <!-- end menu-extras -->
+
+        <div class="clearfix"></div>
+
+    </div> <!-- end container -->
+</div>
+

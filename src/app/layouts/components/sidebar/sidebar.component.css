@@ -1,0 +1,26 @@
+.sidebar-icon{
+    margin-right: 20px;
+}
+
+
+li {
+    list-style:none;
+    margin-left: 30px;
+}
+
+.li-icon {
+    margin-left:10px
+
+}
+
+.mat-list-item{
+    padding-left: 10px !important;
+}
+
+.sub-menu {
+    margin-left: 15px !important;
+}
+
+#topnav .navigation-menu > li .submenu li a {
+    padding: 0px !important;
+}

@@ -1,0 +1,57 @@
+<!-- <mat-nav-list>
+    <div class="row " >
+        <div class="col-md-6 offset-md-3">
+            <img [src]="data.image" alt="skuulba admin" class="rounded-circle " width="100px" height="100px">
+            <b style="font-size: 15px;" >{{data.name}}</b>
+        </div>
+        
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    
+    <div class="text-center">
+        
+        <div *ngFor="let link of data.links">
+
+            <a  mat-list-item  routerLinkActive="is-active" [routerLink]="[link.url]"  >  <mat-icon class="sidebar-icon">{{link.icon}}</mat-icon  > {{ link.name | titlecase}}</a>
+
+                <mat-divider></mat-divider>
+        </div>
+    </div>
+</mat-nav-list> -->
+
+
+
+<div class="navbar-custom">
+    <div class="container-fluid">
+        <div id="navigation">
+            <!-- Navigation Menu-->
+            <ul class="navigation-menu" >
+            
+                    <li class="has-submenu" *ngFor="let link of data">
+                        <a  [routerLink]="[link.url]" (click)="updateTitle(link.name)" *ngIf="!link.links; else has_submenu" > 
+                            <i [class]="link.icon"></i>{{ link.name | titlecase}}
+                          </a>
+
+                          <ng-template #has_submenu >
+                            <a href="javascript:void(0)"><i [class]="link.icon"></i>{{link.name | titlecase}}</a>
+                            <ul class="submenu" >
+                                <li *ngFor="let subLink of link.links"  >
+                                    <a [routerLink]="[subLink.url]" (click)="updateTitle(link.name)"> <i class="ion-arrow-move"></i> {{subLink.name | titlecase }}
+                                    </a>
+                                </li>
+                               
+                            </ul>
+                          </ng-template>
+                      
+                    </li>
+                    
+               
+            </ul>
+            <!-- End navigation menu -->
+        </div> <!-- end #navigation -->
+    </div> <!-- end container -->
+</div> 
+
+
+

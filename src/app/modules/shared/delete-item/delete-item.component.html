@@ -1,0 +1,26 @@
+
+<h1 mat-dialog-title class="text-center">Delete Item</h1>
+<hr>
+<div mat-dialog-content class="container">
+    <div  class="row justify-content-center">
+
+        <div class="col-md-12">
+           <p >Deleting this item is irreversible. Enter the key word <kbd>{{data.word}}</kbd> below to confirm you want to permanently delete it.
+           </p>
+           
+            <mat-form-field appearance="outline"  width="100%" >
+                <input matInput  [(ngModel)]="keyWord" (ngModelChange)="checkWord()"  >
+             
+              </mat-form-field>
+      
+        </div>
+ 
+    
+    </div>
+    
+</div>
+<div mat-dialog-actions class="float-right">
+    <button mat-button (click)="close()" class="float-right">Cancel</button>
+    <button mat-button (click)="delete()" class="float-right" [disabled]="!isValid">Delete</button>
+    
+  </div>
