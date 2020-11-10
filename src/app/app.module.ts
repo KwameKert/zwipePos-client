@@ -8,7 +8,7 @@ import { HeaderComponent, SidebarComponent, FooterComponent, AuthLayoutComponent
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
-import { AuthInterceptor } from './interceptors';
+import { AuthInterceptor, ErrorInterceptor } from './interceptors';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 //import { NgxUiLoaderModule } from 'ngx-ui-loader/lib/core/ngx-ui-loader.module';
 

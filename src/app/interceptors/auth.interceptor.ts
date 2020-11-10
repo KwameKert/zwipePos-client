@@ -26,11 +26,12 @@ import { ToastrService } from 'ngx-toastr';
           let token = user.token
           authReq = req.clone({ setHeaders: { Authorization: `Bearer ${token}` } });
         }
-    
+
+
         return next.handle(authReq).pipe(
           tap((response: HttpResponse<any>) => {
             // let message = response.body.message
-            // console.log(message)
+            
             switch (response.status) {
               
               case 201: //Created
@@ -82,6 +83,8 @@ import { ToastrService } from 'ngx-toastr';
             }
           })
         );
+     
+     
       }
     
 

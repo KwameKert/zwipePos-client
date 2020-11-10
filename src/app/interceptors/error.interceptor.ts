@@ -35,8 +35,6 @@ intercept(
                             const error = err.error.message || err.statusText;
                             console.log(error)
                             this._toastr.error(error, "Oops 🥺", {  timeOut:4000})
-
-
                     }
 
                     // if(err.status == 403){

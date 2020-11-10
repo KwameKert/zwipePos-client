@@ -45,63 +45,63 @@
   
   </div> -->
 
-    <div class="login-background ">
-  <div class="wrapper-page">
-    <div class="card-box">
-        <div class="panel-heading">
-            <h4 class="text-center"> Sign In to <strong>SafeHands</strong></h4>
-        </div>
+  <div class="auth-fluid">
+    <!--Auth fluid left content -->
+    <div class="auth-fluid-form-box">
+        <div class="align-items-center d-flex h-100">
+            <div class="card-body">
 
+                <!-- Logo -->
+             
 
-        <div class="p-20">
-            <form class="form-horizontal m-t-20" [formGroup]="loginForm" (ngSubmit)="loginUser()">
+                <!-- title-->
+                <h2 class="text-center">Zwipe</h2>
+                <h4 class="mt-0">Sign In</h4>
+                <p class="text-muted mb-4">Enter your username and password to access account.</p>
 
-              <mat-form-field appearance="outline" style="width:300px"  >
-                <mat-label>Username</mat-label>
-                <input matInput placeholder="kwamekert"  formControlName="username" >
-                <mat-error *ngIf="loginForm.get('username').invalid"> Invalid input </mat-error>
-              </mat-form-field>
+                <!-- form -->
+                <form  [formGroup]="loginForm" (ngSubmit)="loginUser()">
   
-              <mat-form-field appearance="outline" style="width:300px"  >
-                <mat-label>Password</mat-label>
-                <input matInput placeholder="kwamekert"  formControlName="password" type="password" >
-                <mat-error *ngIf="loginForm.get('password').invalid"> Invalid input </mat-error>
-              </mat-form-field>
-                <div class="form-group ">
-                    <div class="col-12">
-                        <div class="checkbox checkbox-primary">
-                            <input id="checkbox-signup" type="checkbox">
-                            <label for="checkbox-signup">
-                                Remember me
-                            </label>
-                        </div>
+                  <mat-form-field appearance="outline" style="width:400px"  >
+                      <mat-label>Username</mat-label>
+                      <input matInput placeholder="kwamekert"  formControlName="username" >
+                      <mat-error *ngIf="loginForm.get('username').invalid"> Invalid input </mat-error>
+                    </mat-form-field>
 
-                    </div>
+                    <mat-form-field appearance="outline" style="width:400px"  >
+                      <mat-label>Password</mat-label>
+                      <input matInput placeholder="kwamekert"  formControlName="password" type="password" >
+                      <mat-error *ngIf="loginForm.get('password').invalid"> Invalid input </mat-error>
+                    </mat-form-field>
+                <div align="center">
+                  <button class="btn btn-primary btn-block" type="submit">Log In </button>
+               
                 </div>
+                   
+                </form>
+                <!-- end form-->
 
-                <div class="form-group text-center m-t-40">
-                    <div class="col-12">
-                        <button class="btn btn-info btn-block text-uppercase waves-effect waves-light" [disabled]="!loginForm.valid"
-                                type="submit">Log In
-                        </button>
-                    </div>
-                </div>
+                <!-- Footer-->
+              
 
-                <!-- <div class="form-group m-t-30 m-b-0">
-                    <div class="col-12">
-                        <a href="page-recoverpw.html" class="text-dark"><i class="fa fa-lock m-r-5"></i> Forgot
-                            your password?</a>
-                    </div>
-                </div> -->
-            </form>
-
-        </div>
+            </div> <!-- end .card-body -->
+        </div> <!-- end .align-items-center.d-flex.h-100-->
     </div>
+    <!-- end auth-fluid-form-box-->
 
+    <!-- Auth fluid right content -->
+    <!-- <div class="auth-fluid-right text-center">
+        <div class="auth-user-testimonial">
+            <h2 class="mb-3 text-white">I love the color!</h2>
+            <p class="lead"><i class="mdi mdi-format-quote-open"></i> I've been using your theme from the previous developer for our web app, once I knew new version is out, I immediately bought with no hesitation. Great themes, good documentation with lots of customization available and sample app that really fit our need. <i class="mdi mdi-format-quote-close"></i>
+            </p>
+            <h5 class="text-white">
+                - Fadlisaad (Ubold Admin User)
+            </h5>
+        </div> 
+    </div> -->
 
+    <!-- end Auth fluid right content -->
 </div>
-
-
-  </div>
 
 </ng-template>

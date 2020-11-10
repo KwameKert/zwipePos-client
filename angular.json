@@ -30,20 +30,18 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/assets/css/bootstrap.min.css",
-              "src/assets/css/icons.css",
-              "src/assets/css/style.css",
+              "src/assets/css/app-modern-dark.min.css",
+              "src/assets/css/app-modern.min.css",
+              "src/assets/css/icons.min.css",
+              "src/assets/css/bootstrap-modern.min.css",
+              "src/assets/css/bootstrap-modern-dark.min.css",
+             
               "src/styles.scss"
             ],
             "scripts": [
-              "src/assets/js/jquery.min.js",
-              "src/assets/js/popper.min.js",
-              "src/assets/js/bootstrap.min.js",
-              "src/assets/js/waves.js",
-              "src/assets/js/jquery.slimscroll.js",
-              "src/assets/js/jquery.scrollTo.min.js",
-              "src/assets/js/jquery.core.js",
-              "src/assets/js/jquery.app.js"
+              "src/assets/js/vendor.min.js",
+              "src/assets/js/app.min.js"
+              
             ]
           },
           "configurations": {

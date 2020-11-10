@@ -23,6 +23,7 @@ export class AuthService {
         private router: Router,
         private _httpClient: HttpClient
     ) {
+
         this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
         this.user = this.userSubject.asObservable();
     }
@@ -32,14 +33,22 @@ export class AuthService {
   }
 
   login(data: object) {
-    return this._httpClient.post<ApiResponse<any>>(`${this._baseUrl}/auth/admin/login`, data)
+    return this._httpClient.post<ApiResponse<any>>(`${this._baseUrl}/auth/login`, data)
         .pipe(map(data => {
-            localStorage.setItem('user', JSON.stringify(data.data));
-            this.userSubject.next(data.data);
+            //console.log(data);
+            this.storeData(data);
+            this.userSubject.next(data.data.user);
             return data.data;
         })).pipe(map(status=>{
           return status;
         })).toPromise();
+}
+
+
+ storeData(response: any){
+  localStorage.setItem('user', JSON.stringify(response.data.user));
+  localStorage.setItem('shop', JSON.stringify(response.data.shop));
+  localStorage.setItem('token', JSON.stringify(response.data.token));
 }
 
   loginUser(data: any ){
