@@ -20,10 +20,10 @@ import { ToastrService } from 'ngx-toastr';
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
 
-        const user = this._authService.userValue;
+        const token  = JSON.parse(localStorage.getItem("token"));
+        
         let authReq = req.clone();
-        if (user) {
-          let token = user.token
+        if (token) {
           authReq = req.clone({ setHeaders: { Authorization: `Bearer ${token}` } });
         }
 

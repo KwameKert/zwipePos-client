@@ -30,11 +30,9 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/assets/css/app-modern-dark.min.css",
-              "src/assets/css/app-modern.min.css",
+              "src/assets/css/app-creative.min.css",
               "src/assets/css/icons.min.css",
-              "src/assets/css/bootstrap-modern.min.css",
-              "src/assets/css/bootstrap-modern-dark.min.css",
+              "src/assets/css/bootstrap-creative.min.css",
              
               "src/styles.scss"
             ],

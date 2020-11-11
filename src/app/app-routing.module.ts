@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   
   {
-    path:'merchange', 
+    path:'merchant', 
     component: DefaultComponent,
     loadChildren: () => import('./views/merchant/merchant.module')
                        .then(m => m.MerchantModule),

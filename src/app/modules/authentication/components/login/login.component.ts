@@ -33,6 +33,7 @@ ngOnInit() {
   try{
     let response = await  this._authService.login(this.loginForm.value);
     if(response){
+      console.log(response)
         let user = response.user;
         switch(user.role){
             case "ADMIN":
@@ -40,9 +41,9 @@ ngOnInit() {
               return this._router.navigate(['/admin/dashboard']);
               break;
 
-            case "FLEET MANAGER":
-                this._toastr.success("Login as FLEET MANAGER", "Success  😊", {  timeOut:2000});
-                return this._router.navigate(['/manager/dashboard']);
+            case "MERCHANT":
+                this._toastr.success("Login as Merchant", "Success  😊", {  timeOut:2000});
+                return this._router.navigate(['/merchant/dashboard']);
                 break;     
             default:
               this._toastr.success("Login successful", "Success  😊", {  timeOut:2000});

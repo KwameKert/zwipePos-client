@@ -10,6 +10,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import { AuthInterceptor, ErrorInterceptor } from './interceptors';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { NgDynamicBreadcrumbModule } from 'ng-dynamic-breadcrumb';
 //import { NgxUiLoaderModule } from 'ngx-ui-loader/lib/core/ngx-ui-loader.module';
 
 
@@ -29,6 +30,7 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    NgDynamicBreadcrumbModule,
     NgxUiLoaderModule,
       ToastrModule.forRoot({
       positionClass: 'toast-top-right',

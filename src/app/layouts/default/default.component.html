@@ -1,27 +1,26 @@
-<div id="wrapper">
-    <!-- <app-header class="header" (toggleSidebarForMe)="toggleSidebar()"></app-header> -->
+<div
+  id="wrapper"
+  data-layout-mode="detached"
+  data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": true}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'
+>
+<app-header (titleChange)="changeTitle($event)" [role]="role" ></app-header>
+<app-sidebar [data]="links"  (titleChange)="changeTitle($event)"></app-sidebar>
+  <div class="content-page">
+    <div class="content">
+     <div class="row mx-2">
+          <div class="col-9  ">
+             <app-page-title  [title]="pageTitle"></app-page-title> 
+          </div>
+          <div class="col-3  pt-2 text-right">
+             <app-ng-dynamic-breadcrumb [bgColor]="breadcrumbConfig['bgColor']" [fontSize]="breadcrumbConfig['fontSize']" [fontColor]="breadcrumbConfig['fontColor']" [lastLinkColor]="breadcrumbConfig['lastLinkColor']" [symbol]="breadcrumbConfig['symbol']"></app-ng-dynamic-breadcrumb>   
+          </div>     
+     
+      </div>    
+     <div class="container-fluid">
 
-    <div class="content-page">
-        <div class="content">
-
-            <!-- Start Content-->
-            <div class="container-fluid">
-                    <router-outlet></router-outlet>
-
-                </div>
-        </div>
+          <router-outlet></router-outlet>
+          </div>
     </div>
-
+  </div>
 
 </div>
-
-
-
-
-
-<!-- <mat-drawer-container >
-    <mat-drawer mode="side" [opened]="sideBarOpen" >
-        <app-sidebar></app-sidebar> 
-    </mat-drawer>
-    <mat-drawer-content><router-outlet></router-outlet></mat-drawer-content>
-  </mat-drawer-container> -->
