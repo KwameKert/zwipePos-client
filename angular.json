@@ -29,12 +29,13 @@
               "src/assets"
             ],
             "styles": [
+              "src/styles.scss",
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/assets/css/app-creative.min.css",
               "src/assets/css/icons.min.css",
-              "src/assets/css/bootstrap-creative.min.css",
+              "src/assets/css/bootstrap-creative.min.css"
              
-              "src/styles.scss"
+            
             ],
             "scripts": [
               "src/assets/js/vendor.min.js",

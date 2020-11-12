@@ -8,9 +8,14 @@ import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
 })
 export class DefaultComponent implements OnInit {
 
-  role: "Merchant"
+  role = JSON.parse(localStorage.getItem("user")).role;
   pageTitle: string;
   sideBarOpen = true;
+  
+  headerLinks: Array<object> = [
+    {name: 'Profile', icon: 'fas fa-user', url: "/admin/profile"},
+    {name: 'Settings', icon: 'fas fa-cogs', url: "/admin/settings"} 
+  ]
   links: Array<object> = [
     {name: "Dashboard", icon: "mdi mdi-home mr-1", url: "/merchant/dashboard"},
     {name: "Category", icon: "fe-layers mr-1", url: "/merchant/category"},

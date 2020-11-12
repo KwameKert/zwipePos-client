@@ -14,7 +14,6 @@ import { NgDynamicBreadcrumbModule } from 'ng-dynamic-breadcrumb';
 //import { NgxUiLoaderModule } from 'ngx-ui-loader/lib/core/ngx-ui-loader.module';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +34,7 @@ import { NgDynamicBreadcrumbModule } from 'ng-dynamic-breadcrumb';
       ToastrModule.forRoot({
       positionClass: 'toast-top-right',
       preventDuplicates: true,
-  }), 
+  }),
   ],
   providers: [
     DatePipe, 

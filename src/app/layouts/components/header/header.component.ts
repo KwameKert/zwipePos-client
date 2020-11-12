@@ -10,14 +10,14 @@ import { AuthService } from 'src/app/modules/authentication/service/auth.service
 export class HeaderComponent implements OnInit {
   @Output() titleChange: EventEmitter<any> = new EventEmitter<any>();
   @Input() role;
-  profileLinks: Array<object> = [
-    {name: 'Profile', icon: 'zmdi zmdi-account-circle', url: "/settings/profile"},
-    {name: 'Settings', icon: 'zmdi zmdi-account-circle', url: "/settings/password"} 
-  ]
+  shopName = "Zwipe"
+  @Input() profileLinks;
 
   constructor(private _authService: AuthService, private _router: Router) { }
 
   ngOnInit(): void {
+    let shop = JSON.parse(localStorage.getItem("shop"));
+    this.shopName = shop.name;
   }
 
   updateTitle(link: string){
