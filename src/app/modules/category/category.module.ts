@@ -4,6 +4,8 @@ import { AddCategoryComponent } from './components/add-category/add-category.com
 import { ListCategoryComponent } from './components/list-category/list-category.component';
 import { SharedModule } from '../shared/shared.module';
 import { ViewCategoryComponent } from './components/view-category/view-category.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -11,10 +13,12 @@ import { ViewCategoryComponent } from './components/view-category/view-category.
   declarations: [AddCategoryComponent, ListCategoryComponent, ViewCategoryComponent],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    // MatFormFieldModule, 
+    // MatButtonModule,
   ],
   exports: [
-    ListCategoryComponent
+     ListCategoryComponent, ViewCategoryComponent
   ]
 })
 export class CategoryModule { }

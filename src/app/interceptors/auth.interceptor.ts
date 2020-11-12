@@ -13,6 +13,11 @@ import { AuthService } from '../modules/authentication/service/auth.service';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import { ToastrService } from 'ngx-toastr';
 
+export interface Response{
+  body: any;
+  status: number;
+}
+
 @Injectable() export class AuthInterceptor implements HttpInterceptor {
 
     constructor( private _authService: AuthService, private _toastr:ToastrService ){}
@@ -31,15 +36,19 @@ import { ToastrService } from 'ngx-toastr';
         return next.handle(authReq).pipe(
           tap((response: HttpResponse<any>) => {
             // let message = response.body.message
+            //let hold = response.body;
+            if(response.type !=0){
             
-            switch (response.status) {
+            
+           // console.log(response)
+            switch (response.body.status) {
               
               case 201: //Created
                this._toastr.success("Record added successfully","Success  👍");
                 break;
               case 200: //Success
                 switch (req.method) {
-                  case 'PATCH':
+                  case 'PUT':
                     this._toastr.success("Record updated successfully","Success  👍");
                     break;
                   case 'DELETE':
@@ -51,6 +60,7 @@ import { ToastrService } from 'ngx-toastr';
               default:
                 break;
             }
+          }
           }, err => {
             switch (err.status) {
               case 401: //Unauthorized

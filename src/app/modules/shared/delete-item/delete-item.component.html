@@ -1,5 +1,5 @@
 
-<h1 mat-dialog-title class="text-center">Delete Item</h1>
+<h1 mat-dialog-title >Delete Item</h1>
 <hr>
 <div mat-dialog-content class="container">
     <div  class="row justify-content-center">
@@ -20,7 +20,17 @@
     
 </div>
 <div mat-dialog-actions class="float-right">
-    <button mat-button (click)="close()" class="float-right">Cancel</button>
+    <button
+    type="button"
+    class="btn btn-danger waves-effect waves-light  float-right"
+    (click)="close()" 
+  ><i class="mdi mdi-close"></i> Cancel</button>
+  <button
+  type="button"
+  class="btn btn-success waves-effect waves-light ml-2 float-right"
+  (click)="delete()" [disabled]="!isValid"
+><i class="mdi mdi-trash"></i> Delete</button>
+    <!-- <button mat-button (click)="close()" class="float-right">Cancel</button>
     <button mat-button (click)="delete()" class="float-right" [disabled]="!isValid">Delete</button>
-    
+     -->
   </div>

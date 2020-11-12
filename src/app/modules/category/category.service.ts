@@ -22,7 +22,7 @@ export class CategoryService  extends CrudService<Category>{
 
   private _url :String = environment.api_host;
   constructor(public _httpClient: HttpClient) { 
-    super(_httpClient, "user")
+    super(_httpClient, "category")
   }
 
   fetchCategories(id: Number){

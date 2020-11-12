@@ -4,11 +4,13 @@
 </h3>
 
 <div mat-dialog-content class="container">
-
+    <p class="lead"><b>Description: </b> {{data.description}}</p> 
 </div>
 
 <div mat-dialog-actions class="float-right">
-
-    <button mat-button (click)="close()" class="float-right">Close</button>
-
+    <button
+    type="button"
+    class="btn btn-danger waves-effect waves-light  float-right"
+    (click)="close()" 
+  ><i class="mdi mdi-close"></i> Close</button>
 </div>

@@ -13,3 +13,12 @@
 }
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+.has-error .form-control {
+    border-color: #ef4554;
+    box-shadow: none !important; }
+
+    .error {
+        color: #ef4554;
+        font-size: 12px;
+        font-weight: 500; }

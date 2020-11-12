@@ -36,7 +36,7 @@ export class CrudService<T> {
 
 
   public updateItem(data: T){
-    return this._httpClient.patch<ApiResponse<T>>(`${this._baseUrl}/${this.model}`, data).toPromise();
+    return this._httpClient.put<ApiResponse<T>>(`${this._baseUrl}/${this.model}/`, data).toPromise();
   }
 
   protected getQueryString(filter: object) {

@@ -1,12 +1,47 @@
 <h3 mat-dialog-title>Add Category 
 </h3>
+<form [formGroup]="categoryForm"class="needs-validation" (ngSubmit)="saveCategory()">
 
 <div mat-dialog-content class="container">
+        <div class="form-group-custom " [ngClass]="{ 'has-error': categoryForm.get('name').touched && !categoryForm.get('name').valid}">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" formControlName="name">
+            <span class="error" *ngIf="categoryForm.get('name').touched && !categoryForm.get('name').valid">
+                name is required
+            </span>
+        </div>
+
+        <div class="form-group-custom" >
+            <label for="name">Description</label>
+            <textarea   formControlName="description"  class="form-control" rows="2" cols="8"></textarea>
+            
+        </div>
+        <div class="form-group"  [ngClass]="{ 'has-error': categoryForm.get('status').touched && !categoryForm.get('status').valid}">
+            <div class="form-label">Status</div>
+               <select name="category" formControlName="status" class="form-control" required>
+                   <option value="active">Active</option>
+                   <option value="inactive">Deactivate</option>
+               </select>     
+               <span class="error" *ngIf="categoryForm.get('status').touched && !categoryForm.get('status').valid">
+                status is required
+            </span>
+        </div>
+       
+    
+</div>
+
+<div mat-dialog-actions class="float-right"> 
+    <button
+    type="button"
+    class="btn btn-danger waves-effect waves-light  float-right"
+    (click)="close()" 
+  ><i class="mdi mdi-close"></i> Cancel</button>
+    <button
+    type="submit"
+    class="btn btn-success waves-effect waves-light ml-2 float-right"
+    
+  ><i class="mdi mdi-check"></i> Save</button>
 
 </div>
 
-<div mat-dialog-actions class="float-right">
-
-    <button mat-button (click)="close()" class="float-right">Close</button>
-
-</div>
+</form>

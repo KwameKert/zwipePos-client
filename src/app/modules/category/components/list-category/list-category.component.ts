@@ -8,6 +8,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ViewCategoryComponent } from '../view-category/view-category.component';
 import { AddCategoryComponent } from '../add-category/add-category.component';
+import { DeleteItemComponent } from 'src/app/modules/shared/delete-item/delete-item.component';
 
 
 @Component({
@@ -70,8 +71,8 @@ export class ListCategoryComponent implements OnInit {
 
   viewCategory(data: any){
     const dialogRef = this.dialog.open(ViewCategoryComponent, {
-      width: '800px',
-      height: '420px',
+      width: '400px',
+      height: '220px',
       data
     })
     dialogRef.afterClosed().subscribe(result => {
@@ -83,16 +84,15 @@ export class ListCategoryComponent implements OnInit {
   }
 
   editCategory(data: any){
-    console.log(data)
-  }
-
-  addCategory(data: any){
     const dialogRef = this.dialog.open(AddCategoryComponent, {
-      width: '800px',
+      width: '400px',
       height: '420px',
       data
     })
     dialogRef.afterClosed().subscribe(result => {
+      if(result.success){
+        this.fetchCategories();
+      }
     }, error=>{
       // this._toastr.error("Oops an error. 🥺","",{
       //   timeOut:2000
@@ -100,8 +100,41 @@ export class ListCategoryComponent implements OnInit {
     });
   }
 
-  deleteCategory(data: any){
+  addCategory(data: any){
+    const dialogRef = this.dialog.open(AddCategoryComponent, {
+      width: '400px',
+      height: '420px'
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.success){
+        this.fetchCategories();
+      }
+    }, error=>{
+      // this._toastr.error("Oops an error. 🥺","",{
+      //   timeOut:2000
+      // })
+    });
+  }
+
+
+  deleteCategory(_id: Number){
+    let data = {
+    model: "category", _id, word: "DELETe category"
+    }
+    const dialogRef = this.dialog.open(DeleteItemComponent, {
+      width: '550px',
+      height: '280px',
+      data: data
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.event){
+        this.fetchCategories();
     
+      }else{
+
+      }
+    });
   }
 
 }
