@@ -5,10 +5,10 @@ import { environment } from 'src/environments/environment';
 import { CrudService } from '../shared/service';
 
 export interface Product {
-  id: Number,
+  id: number,
   name: String, 
-  quantity: Number, 
-  amount : Number, 
+  quantity: number, 
+  amount : number, 
   status: String , 
   description: String, 
   shopId: String, 
@@ -16,10 +16,10 @@ export interface Product {
   categoryName: String, 
   createdAt: Date, 
   updatedAt: Date,
-  size: Number , 
-  weight: Number,
+  size: number , 
+  weight: number,
   color: String,
-  minQuantity: Number,
+  minQuantity: number,
 }
 
 @Injectable({

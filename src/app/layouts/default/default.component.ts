@@ -21,7 +21,7 @@ export class DefaultComponent implements OnInit {
     {name: "Category", icon: "fe-layers mr-1", url: "/merchant/category"},
     {name: "Product", icon: "mdi mdi-cart mr-1", url: "/merchant/product"},
     {name: "Transaction", icon: "fas fa-receipt mr-1", url: "/merchant/transaction"},
-    {name: "Cash Register", icon: " fas fa-cash-register mr-1", url: "/merchant/transaction"},
+    {name: "Cash Register", icon: " fas fa-cash-register mr-1", url: "/merchant/cash-register"},
 
   ];
   breadcrumbConfig: object = {

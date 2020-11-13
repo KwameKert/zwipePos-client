@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-md-8">
+      <div class="card-box">
+        <h4 class="header-title mb-3">Shopping Cart</h4>
+      
+        <button
+        type="button"
+        class="btn btn-info waves-effect waves-light  float-left"
+       (click)="addItem()"
+      >
+        <i class="mdi mdi-clipboard-plus mr-1"></i> Add Item
+      </button>
+
+        <div class="text-right">
+            <h5>
+                <b class="mr-2"> Receipt # : </b>{{receiptId}}
+            </h5>
+            <h5>
+                <b> Date: </b>{{currentDate | date: 'dd-MM-yyyy'}}
+            </h5>
+            
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-borderless table-centered mb-0">
+            <thead class="thead-light">
+                <tr>
+                    <th>Product</th>
+                    <th>Price (₵)  </th>
+                    <th>Quantity</th>
+                    <th>Total (₵) </th>
+                    <th style="width: 50px;"></th>
+                </tr>
+            </thead>
+                <tr *ngFor="let item of cart;let i = index" >
+                    <td>{{item.itemName}}</td>
+                    <td>{{item.itemPrice}}</td>
+                    <td><span class="mr-3">{{item.itemQuantity}} </span>
+                        <button class="btn btn-info btn-xs mr-1" (click)="addItemQuantity(i)"><i class="mdi mdi-plus"></i></button> <button class="btn btn-secondary btn-xs" (click)="subtractItemQuantity(i)"><i class="mdi mdi-minus"></i></button></td>
+                    <td>{{item.total | currency: " "}}</td>
+        </tr>
+            <tbody>
+
+            </tbody>
+            </table>
+        </div>
+        <div >
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card-box">
+            <h4 class="header-title mb-3">Cart Summary</h4>
+            <div class="table-responsive">
+                <table class="table mb-0">
+                    <tbody>
+                        <tr>
+                            <td> Total (₵) : </td>
+                            <td>{{grandTotal}}</td>
+                        </tr>
+                        <tr>
+                            <td> Tax (₵) : </td>
+                            <td>0</td>
+                        </tr>
+
+                        <tr>
+                            <th>Grand Total (₵)  :</th>
+                            <th>{{grandTotal | currency: " "}}</th>
+                        </tr>
+                        </tbody>
+                        </table></div>
+
+        </div>
+    </div>
+    </div>

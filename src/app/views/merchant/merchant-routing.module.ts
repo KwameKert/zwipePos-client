@@ -5,6 +5,7 @@ import { AddCategoryComponent } from 'src/app/modules/category/components/add-ca
 import { MerchantComponent } from 'src/app/modules/dashboard/components/merchant/merchant.component';
 import { ListCategoryComponent } from 'src/app/modules/category/components/list-category/list-category.component';
 import { ListProductComponent } from 'src/app/modules/product/component/list-product/list-product.component';
+import { ShopingCartComponent } from 'src/app/modules/cash-register/components/shoping-cart/shoping-cart.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,23 @@ const routes: Routes = [
         },
         {
           label: 'product',
+          url: ''
+        }
+      ]
+    },
+  },
+  {
+    path: 'cash-register',
+    component: ShopingCartComponent,
+    data: {
+      title: 'cash-register',
+      breadcrumb: [
+        {
+          label: 'home',
+          url: '/merchant/dashboard'
+        },
+        {
+          label: 'cash-register',
           url: ''
         }
       ]
