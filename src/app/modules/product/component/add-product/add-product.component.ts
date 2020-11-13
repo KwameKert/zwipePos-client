@@ -34,9 +34,9 @@ export class AddProductComponent implements OnInit {
         name: new FormControl('', Validators.required),
         description: '',
         status: new FormControl('', Validators.required),
-        shop_id: this.shopId,
+        shopId: this.shopId,
         amount: new FormControl('', Validators.required),
-        category_id: new FormControl('', Validators.required),
+        categoryId: new FormControl('', Validators.required),
         quantity: new FormControl('', Validators.required),
         minQuantity: new FormControl('', Validators.required),
         weight: new FormControl('', Validators.required),
@@ -52,7 +52,14 @@ export class AddProductComponent implements OnInit {
       name: new FormControl(data.name, Validators.required),
       description: data.description,
       status: new FormControl(data.status, Validators.required),
-      shopId: this.shopId
+      shopId: this.shopId,
+      amount: new FormControl(data.amount, Validators.required),
+      categoryId: new FormControl(data.categoryId, Validators.required),
+      quantity: new FormControl(data.quantity, Validators.required),
+      minQuantity: new FormControl(data.minQuantity, Validators.required),
+      weight: data.weight,
+      size: data.size,
+      color: data.color
     })
   }
 

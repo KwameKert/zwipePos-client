@@ -62,8 +62,7 @@ export class ListProductComponent implements OnInit {
 addProduct(data: any){
   const dialogRef = this.dialog.open(AddProductComponent, {
     width: '800px',
-    height: '520px',
-    data
+    height: '520px'
   })
   dialogRef.afterClosed().subscribe(result => {
    this.fetchProducts();
@@ -91,6 +90,17 @@ viewProduct(data: any){
 
  
   editProduct(data: any){
-
+    const dialogRef = this.dialog.open(AddProductComponent, {
+      width: '800px',
+      height: '520px',
+      data
+    })
+    dialogRef.afterClosed().subscribe(result => {
+     this.fetchProducts();
+    }, error=>{
+      // this._toastr.error("Oops an error. 🥺","",{
+      //   timeOut:2000
+      // })
+    });
   }
 }

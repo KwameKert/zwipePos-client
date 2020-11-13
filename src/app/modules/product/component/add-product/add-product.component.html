@@ -31,18 +31,18 @@
         class="form-group-custom"
         [ngClass]="{
           'has-error':
-            productForm.get('category_id').touched &&
-            !productForm.get('category_id').valid
+            productForm.get('categoryId').touched &&
+            !productForm.get('categoryId').valid
         }"
       >
         <label for="name">Category</label>
-        <ng-select formControlName="category_id">
+        <ng-select formControlName="categoryId">
           <ng-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</ng-option>
        </ng-select>
         <span
           class="error"
           *ngIf="
-            productForm.get('category_id').touched && !productForm.get('category_id').valid"
+            productForm.get('categoryId').touched && !productForm.get('categoryId').valid"
         >
           category is required
         </span>
