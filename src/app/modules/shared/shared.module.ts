@@ -17,6 +17,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { DeleteItemComponent } from './delete-item/delete-item.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 // import { AvatarModule } from 'ngx-avatar/lib/avatar.module';
 // import { ToastrModule } from 'ngx-toastr';
@@ -41,7 +42,8 @@ import { DeleteItemComponent } from './delete-item/delete-item.component';
     MatPaginatorModule,
     MatTableModule,
     MatDialogModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    NgSelectModule,
     
   //   NgxSkeletonLoaderModule,
   //   ToastrModule.forRoot({
@@ -66,6 +68,7 @@ import { DeleteItemComponent } from './delete-item/delete-item.component';
     MatDialogModule,
     NgxSkeletonLoaderModule,
     MatMenuModule,
+    NgSelectModule,
   ],
   entryComponents: [DeleteItemComponent]
 })

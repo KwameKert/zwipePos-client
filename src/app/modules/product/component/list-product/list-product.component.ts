@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductService } from '../../product.service';
+import { AddProductComponent } from '../add-product/add-product.component';
 import { ViewProductComponent } from '../view-product/view-product.component';
 
 @Component({
@@ -14,7 +15,7 @@ export class ListProductComponent implements OnInit {
 
   shop = JSON.parse(localStorage.getItem("shop"));
 
-  displayedColumns: Array<string> = ['name','category','description','quantity', 'unit price','status','createdAt', 'actions'];
+  displayedColumns: Array<string> = ['name','category','color','quantity', 'unit price','status','createdAt', 'actions'];
   dataSource: MatTableDataSource<any> ;
   categories: any;
   isEmpty = false;
@@ -59,7 +60,18 @@ export class ListProductComponent implements OnInit {
 }
 
 addProduct(data: any){
-
+  const dialogRef = this.dialog.open(AddProductComponent, {
+    width: '800px',
+    height: '520px',
+    data
+  })
+  dialogRef.afterClosed().subscribe(result => {
+   this.fetchProducts();
+  }, error=>{
+    // this._toastr.error("Oops an error. 🥺","",{
+    //   timeOut:2000
+    // })
+  });
 }
 
 viewProduct(data: any){

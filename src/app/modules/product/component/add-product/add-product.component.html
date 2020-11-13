@@ -1,1 +1,210 @@
-<p>add-product works!</p>
+<h3 mat-dialog-title>Add Product</h3>
+<form
+  [formGroup]="productForm"
+  class="needs-validation"
+  (ngSubmit)="saveProduct()"
+>
+  <div mat-dialog-content class="container">
+    <div class="row">
+      <div class="col-6">
+        <div
+        class="form-group-custom"
+        [ngClass]="{
+          'has-error':
+            productForm.get('name').touched && !productForm.get('name').valid
+        }"
+      >
+        <label for="name">Name</label>
+        <input type="text" class="form-control" formControlName="name" />
+        <span
+          class="error"
+          *ngIf="
+            productForm.get('name').touched && !productForm.get('name').valid
+          "
+        >
+          name is required
+        </span>
+      </div>
+      </div>
+      <div class="col-6">
+        <div
+        class="form-group-custom"
+        [ngClass]="{
+          'has-error':
+            productForm.get('category_id').touched &&
+            !productForm.get('category_id').valid
+        }"
+      >
+        <label for="name">Category</label>
+        <ng-select formControlName="category_id">
+          <ng-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</ng-option>
+       </ng-select>
+        <span
+          class="error"
+          *ngIf="
+            productForm.get('category_id').touched && !productForm.get('category_id').valid"
+        >
+          category is required
+        </span>
+       
+      </div>
+      </div>
+    </div>
+   
+
+   
+<div class="row">
+  <div class="col-6">
+    <div
+    class="form-group-custom"
+    [ngClass]="{
+      'has-error':
+        productForm.get('quantity').touched &&
+        !productForm.get('quantity').valid
+    }"
+  >
+    <label for="name">Quantity</label>
+    <input type="number" class="form-control" formControlName="quantity" />
+    <span
+      class="error"
+      *ngIf="
+        productForm.get('quantity').touched &&
+        !productForm.get('quantity').valid
+      "
+    >
+      quantity is required
+    </span>
+  </div>
+  </div>
+  <div class="col-6">
+    <div
+      class="form-group-custom"
+      [ngClass]="{
+        'has-error':
+          productForm.get('minQuantity').touched &&
+          !productForm.get('minQuantity').valid
+      }"
+    >
+      <label for="name">Minimum Quantity</label>
+      <input type="number" class="form-control" formControlName="minQuantity" />
+      <span
+        class="error"
+        *ngIf="
+          productForm.get('minQuantity').touched &&
+          !productForm.get('minQuantity').valid
+        "
+      >
+        quantity is required
+      </span>
+    </div>
+  </div>
+</div>
+   
+
+    
+  <div class="row">
+    <div class="col-4">
+      <div class="form-group-custom">
+        <label for="name">Color</label>
+        <input type="text" class="form-control" formControlName="color" />
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="form-group-custom">
+        <label for="name">Weight (kg)</label>
+        <input type="text" class="form-control" formControlName="weight" />
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="form-group-custom">
+        <label for="name">Size (in)</label>
+        <input type="text" class="form-control" formControlName="size" />
+      </div>
+    </div>
+  </div>
+    
+
+  <div class="row">
+    <div class="col-6">
+      <div
+      class="form-group"
+      [ngClass]="{
+        'has-error':
+          productForm.get('status').touched &&
+          !productForm.get('status').valid
+      }"
+    >
+      <div class="form-label">Status</div>
+      <select
+        name="category"
+        formControlName="status"
+        class="form-control"
+        required
+      >
+        <option value="active">Active</option>
+        <option value="inactive">Deactivate</option>
+      </select>
+      <span
+        class="error"
+        *ngIf="
+          productForm.get('status').touched &&
+          !productForm.get('status').valid
+        "
+      >
+        status is required
+      </span>
+    </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group-custom"  [ngClass]="{
+        'has-error':
+          productForm.get('amount').touched &&
+          !productForm.get('amount').valid
+      }">
+        <label for="name">Unit Price (₵) </label>
+        <input type="text" class="form-control" formControlName="amount" />
+        <span
+        class="error"
+        *ngIf="
+          productForm.get('amount').touched &&
+          !productForm.get('amount').valid
+        "
+      >
+        price is required
+      </span>
+      </div>
+    </div>
+  </div>
+  
+
+    <div class="form-group-custom">
+      <label for="name">Description</label>
+      <textarea
+        formControlName="description"
+        class="form-control"
+        rows="2"
+        cols="8"
+      ></textarea>
+    </div>
+
+  
+   
+  </div>
+
+  <div mat-dialog-actions class="float-right">
+    <button
+      type="button"
+      class="btn btn-danger waves-effect waves-light float-right"
+      (click)="close()"
+    >
+      <i class="mdi mdi-close"></i> Cancel
+    </button>
+    <button
+      type="submit"
+      class="btn btn-success waves-effect waves-light ml-2 float-right"
+      [disabled]="!productForm.valid"
+    >
+      <i class="mdi mdi-check"></i> Save
+    </button>
+  </div>
+</form>
