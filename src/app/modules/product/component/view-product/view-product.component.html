@@ -1,0 +1,54 @@
+<h3 mat-dialog-title>View Product 
+    <span *ngIf="data.status == 'inactive'" class="badge badge-warning"> {{data.status}} </span> 
+    <span *ngIf="data.status == 'active'" class="badge badge-success"> {{data.status}} </span>
+</h3>
+
+<div mat-dialog-content class="container">
+    <div class="row">
+        <div class="col-6">
+            <p class=""><b>Name: </b> {{data.name}}</p> 
+        </div>
+        <div class="col-6">
+            <p class=""><b>Category: </b> {{data.categoryName}}</p> 
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <p class=""><b>Quantity: </b> {{data.quantity}}</p> 
+        </div>
+        <div class="col-6">
+            <p class=""><b>Unit Price: </b> {{data.amount}}</p> 
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <p class=""><b>Size: </b> {{data.size}}</p> 
+        </div>
+        <div class="col-6">
+            <p class=""><b>Weight: </b> {{data.weight}}</p> 
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <p class=""><b>Color: </b> {{data.color}}</p> 
+        </div>
+        <div class="col-6">
+            <p class=""><b>Minimum Quantity: </b> {{data.minQuantity}}</p> 
+        </div>
+    </div>
+    <p><b>Description : </b>
+        {{data.description}}
+    </p>
+
+</div>
+
+<div mat-dialog-actions class="float-right">
+    <button
+    type="button"
+    class="btn btn-danger waves-effect waves-light  float-right"
+    (click)="close()" 
+  ><i class="mdi mdi-close"></i> Close</button>
+</div>

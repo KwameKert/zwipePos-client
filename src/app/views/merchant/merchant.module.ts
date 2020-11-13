@@ -5,6 +5,7 @@ import { DashboardModule } from 'src/app/modules/dashboard/dashboard.module';
 import { SharedModule } from 'src/app/modules/shared/shared.module';
 import { ListCategoryComponent } from 'src/app/modules/category/components/list-category/list-category.component';
 import { CategoryModule } from 'src/app/modules/category/category.module';
+import { ProductModule } from 'src/app/modules/product/product.module';
 
 
 
@@ -14,6 +15,7 @@ import { CategoryModule } from 'src/app/modules/category/category.module';
     CommonModule, 
     CategoryModule,
     DashboardModule,
+    ProductModule,
     SharedModule,
     MerchantRoutingModule
   ]

@@ -1,0 +1,176 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="card-box">
+        <h4 class="header-title mb-3">List Products</h4>
+
+        
+          <div class="" id="jumbo">
+            <div class="" *ngIf="!isEmpty">
+              <mat-form-field appearance="outline">
+                <mat-label>Filter</mat-label>
+                <input
+                  matInput
+                  (keyup)="applyFilter($event)"
+                  placeholder="Ex. Mia"
+                  #input
+                />
+              </mat-form-field>
+            </div>
+            <div class="">
+              <button
+              type="button"
+              class="btn btn-info waves-effect waves-light  float-right"
+              (click)="addProduct(null)"
+            >
+              <i class="mdi mdi-clipboard-plus mr-1"></i> Add Product
+            </button>
+            </div>
+          </div>
+            
+            <div class="row" *ngIf="!isEmpty">
+            <div *ngIf="isLoading; else elseBlock" style="width: 100%">
+              <ngx-skeleton-loader
+                count="5"
+                [theme]="{
+                  width: '90%',
+                  'border-radius': '0',
+                  height: '15px',
+                  'margin-bottom': '10px'
+                }"
+              ></ngx-skeleton-loader>
+            </div>
+    
+            <ng-template #elseBlock>
+              <div class="table-responsive">
+                <table
+                  mat-table
+                  [dataSource]="dataSource"
+                  class="table table-centered table-hover mb-0"
+                >
+                  <ng-container matColumnDef="name">
+                    <th class="border-top-0" mat-header-cell *matHeaderCellDef>
+                      Name
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                     
+                        {{ element.name | titlecase }}
+                    
+                    </td>
+                  </ng-container>
+    
+                  <!-- Weight Column -->
+                  <ng-container matColumnDef="category">
+                    <th class="border-top-0" mat-header-cell *matHeaderCellDef>
+                      Category
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.categoryName | titlecase }}
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="description">
+                    <th class="border-top-0" mat-header-cell *matHeaderCellDef>
+                      Description
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.description | excerpt: 10}}
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="quantity">
+                    <th class="border-top-0" mat-header-cell *matHeaderCellDef>
+                      Quantity
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.quantity  }}
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="unit price">
+                    <th class="border-top-0" mat-header-cell *matHeaderCellDef>
+                      Unit price  (₵) 
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.amount | currency: " " }}
+                    </td>
+                  </ng-container>
+    
+                  <ng-container matColumnDef="status">
+                    <th class="border-top-0" mat-header-cell *matHeaderCellDef>
+                      Status
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      <span
+                        *ngIf="element.status == 'inactive'"
+                        class="badge badge-dark"
+                      >
+                        {{ element.status }}
+                      </span>
+                      <span
+                        *ngIf="element.status == 'active'"
+                        class="badge badge-success"
+                      >
+                        {{ element.status }}
+                      </span>
+                    </td>
+                  </ng-container>
+    
+                  <ng-container matColumnDef="createdAt">
+                    <th class="border-top-0" mat-header-cell *matHeaderCellDef>
+                      Created At
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.createdAt | dateAgo }}
+                    </td>
+                  </ng-container>
+    
+                  <!-- Symbol Column -->
+                  <ng-container matColumnDef="actions">
+                    <th class="border-top-0" mat-header-cell *matHeaderCellDef>
+                      Actions
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      <a href="javascript:void(0)" (click)="viewProduct(element)">
+                        <i class="fas fa-info info"></i>
+                      </a>
+    
+                      <a href="javascript:void(0)" (click)="editProduct(element)">
+                        <i class="fas fa-edit edit"></i>
+                      </a>
+                      <a
+                        href="javascript:void(0)"
+                        (click)="deleteProduct(element.id)"
+                      >
+                        <i class="fas fa-trash-alt trash"></i>
+                      </a>
+                    </td>
+                  </ng-container>
+    
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr
+                    mat-row
+                    *matRowDef="let row; columns: displayedColumns"
+                    [ngClass]="{ highlight: selectedRowIndex == row.id }"
+                  ></tr>
+                </table>
+              </div>
+            </ng-template>
+            <div class="row justify-content-center mt-3" style="width: 100%">
+              <div class="">
+                <mat-paginator
+                  [pageSizeOptions]="[5, 10, 20]"
+                  showFirstLastButtons
+                  class="float-right"
+                ></mat-paginator>
+              </div>
+            </div>
+          </div>
+          <!-- end card-box-->
+          <div class="row justify-content-center text-center" style="width: 100%">
+            <div class="col-9">
+              <div class="alert alert-info" *ngIf="isEmpty">
+                No products found.
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>
