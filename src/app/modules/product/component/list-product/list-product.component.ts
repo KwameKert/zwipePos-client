@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { DeleteItemComponent } from 'src/app/modules/shared/delete-item/delete-item.component';
 import { ProductService } from '../../product.service';
 import { AddProductComponent } from '../add-product/add-product.component';
 import { ViewProductComponent } from '../view-product/view-product.component';
@@ -101,6 +102,25 @@ viewProduct(data: any){
       // this._toastr.error("Oops an error. 🥺","",{
       //   timeOut:2000
       // })
+    });
+  }
+
+    deleteProduct(_id: Number){
+    let data = {
+    model: "product", _id, word: "DELETe product"
+    }
+    const dialogRef = this.dialog.open(DeleteItemComponent, {
+      width: '550px',
+      height: '280px',
+      data: data
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.event){
+        this.fetchProducts();
+      }else{
+
+      }
     });
   }
 }
