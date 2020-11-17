@@ -1,0 +1,152 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="card-box">
+        <h4 class="header-title mb-3">List Receipts</h4>
+        <div >
+         
+        </div>
+       
+        <div class="row" *ngIf="!isEmpty">
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Filter</mat-label>
+            <input
+              matInput
+              (keyup)="applyFilter($event)"
+              placeholder="Ex. Mia"
+              #input
+            />
+          </mat-form-field>
+  
+          <div *ngIf="isLoading; else elseBlock" style="width: 100%">
+            <ngx-skeleton-loader
+              count="5"
+              [theme]="{
+                width: '90%',
+                'border-radius': '0',
+                height: '15px',
+                'margin-bottom': '10px'
+              }"
+            ></ngx-skeleton-loader>
+          </div>
+  
+          <ng-template #elseBlock>
+            <div class="table-responsive">
+              <table
+                mat-table
+                [dataSource]="dataSource"
+                class="table table-centered table-hover mb-0"
+              >
+                <ng-container matColumnDef="code">
+                  <th class="border-top-0" mat-header-cell *matHeaderCellDef>
+                    Receipt Code
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                   
+                      {{ element.receiptCode }}
+                  
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="customerName">
+                  <th class="border-top-0" mat-header-cell *matHeaderCellDef>
+                    Customer Name
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                   
+                      {{ element.customerName }}
+                  
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="customerPhone">
+                  <th class="border-top-0" mat-header-cell *matHeaderCellDef>
+                    Customer Phone
+                  </th>
+                  <td mat-cell *matCellDef="let element">          
+                      {{ element.customerPhone }}             
+                  </td>
+                </ng-container>
+  
+                <!-- Weight Column -->
+                <ng-container matColumnDef="amount">
+                  <th class="border-top-0" mat-header-cell *matHeaderCellDef>
+                    Amount
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.amount | currency: " " }}
+                  </td>
+                </ng-container>
+  
+             
+  
+                <ng-container matColumnDef="createdAt">
+                  <th class="border-top-0" mat-header-cell *matHeaderCellDef>
+                    Created At
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.createdAt | dateAgo }}
+                  </td>
+                </ng-container>
+  
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="actions">
+
+                    <th class="border-top-0" mat-header-cell *matHeaderCellDef>
+                        Actions
+                      </th>
+                      <td mat-cell *matCellDef="let element">
+                        <a href="javascript:void(0)" (click)="viewCategory(element)">
+                          <i class="fas fa-info info"></i>
+                        </a>
+                    </td>
+                </ng-container>    
+                  <!-- <th class="border-top-0" mat-header-cell *matHeaderCellDef>
+                    Actions
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <a href="javascript:void(0)" (click)="viewCategory(element)">
+                      <i class="fas fa-info info"></i>
+                    </a>
+  
+                    <a href="javascript:void(0)" (click)="editCategory(element)">
+                      <i class="fas fa-edit edit"></i>
+                    </a>
+                    <a
+                      href="javascript:void(0)"
+                      (click)="deleteCategory(element.id)"
+                    >
+                      <i class="fas fa-trash-alt trash"></i>
+                    </a>
+                  </td> -->
+  
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: displayedColumns"
+                  [ngClass]="{ highlight: selectedRowIndex == row.id }"
+                ></tr>
+              </table>
+            </div>
+          </ng-template>
+          <div class="row justify-content-center mt-3" style="width: 100%">
+            <div class="">
+              <mat-paginator
+                [pageSizeOptions]="[5, 10, 20]"
+                showFirstLastButtons
+                class="float-right"
+              ></mat-paginator>
+            </div>
+          </div>
+        </div>
+        <!-- end card-box-->
+        <div class="row justify-content-center text-center" style="width: 100%">
+          <div class="col-9">
+            <div class="alert alert-info" *ngIf="isEmpty">
+              No transactions found.
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end col-->
+    </div>
+  </div>
+  

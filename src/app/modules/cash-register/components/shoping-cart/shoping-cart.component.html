@@ -29,15 +29,21 @@
                     <th>Price (₵)  </th>
                     <th>Quantity</th>
                     <th>Total (₵) </th>
+                    <th>Action </th>
                     <th style="width: 50px;"></th>
                 </tr>
             </thead>
                 <tr *ngFor="let item of cart;let i = index" >
-                    <td>{{item.itemName}}</td>
-                    <td>{{item.itemPrice}}</td>
-                    <td><span class="mr-3">{{item.itemQuantity}} </span>
+                    <td>{{item.productName}}</td>
+                    <td>{{item.amount}}</td>
+                    <td><span class="mr-3">{{item.quantity}} </span>
                         <button class="btn btn-info btn-xs mr-1" (click)="addItemQuantity(i)"><i class="mdi mdi-plus"></i></button> <button class="btn btn-secondary btn-xs" (click)="subtractItemQuantity(i)"><i class="mdi mdi-minus"></i></button></td>
                     <td>{{item.total | currency: " "}}</td>
+                    
+                    <td>
+                        <a href="javascript:void(0)" (click)="removeItem(i)">
+                            <i class="fas fa-trash delete"></i>
+                          </a></td>
         </tr>
             <tbody>
 
@@ -69,7 +75,9 @@
                             <th>{{grandTotal | currency: " "}}</th>
                         </tr>
                         </tbody>
-                        </table></div>
+                        </table>
+            </div>
+            <button class="btn btn-block btn-success" [disabled]="cart.length == 0" (click)="checkout()">Checkout</button>
 
         </div>
     </div>

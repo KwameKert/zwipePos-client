@@ -16,7 +16,7 @@ export class ListProductComponent implements OnInit {
 
   shop = JSON.parse(localStorage.getItem("shop"));
 
-  displayedColumns: Array<string> = ['name','category','color','quantity', 'unit price','status','createdAt', 'actions'];
+  displayedColumns: Array<string> = ['name','category','color','quantity', 'cost price','status','createdAt', 'actions'];
   dataSource: MatTableDataSource<any> ;
   categories: any;
   isEmpty = false;
@@ -62,8 +62,8 @@ export class ListProductComponent implements OnInit {
 
 addProduct(data: any){
   const dialogRef = this.dialog.open(AddProductComponent, {
-    width: '800px',
-    height: '520px'
+    width: '900px',
+    height: '600px'
   })
   dialogRef.afterClosed().subscribe(result => {
    this.fetchProducts();

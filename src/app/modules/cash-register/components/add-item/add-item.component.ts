@@ -44,24 +44,24 @@ export class AddItemComponent implements OnInit {
   
 
     addToCart(){
-      let amount  = this.selectedProduct.amount;
-      console.log(typeof(amount + 9));
+      // let amount  = this.selectedProduct.sellingPrice;
+      // console.log(typeof(amount + 9));
       let data = {
-        itemName: this.selectedProduct.name,
-        itemPrice: this.selectedProduct.amount,
-        itemId: this.selectedProduct.id,
-        itemQuantity: this.quantity,
-        total: this.quantity * this.selectedProduct.amount
+        productName: this.selectedProduct.name,
+        amount: this.selectedProduct.sellingPrice,
+        productId: this.selectedProduct.id,
+        quantity: this.quantity,
+        total: this.quantity * this.selectedProduct.sellingPrice
       }
 
-     this.dialogRef.close({data});
+     this.dialogRef.close({success: true,data});
      //console.log(data);
     }
 
 
   close(){
  
-    this.dialogRef.close();
+    this.dialogRef.close({success: false});
   
  }
 }

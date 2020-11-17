@@ -84,12 +84,12 @@
                       {{ element.quantity  }}
                     </td>
                   </ng-container>
-                  <ng-container matColumnDef="unit price">
+                  <ng-container matColumnDef="cost price">
                     <th class="border-top-0" mat-header-cell *matHeaderCellDef>
-                      Unit price  (₵) 
+                      Cost price  (₵) 
                     </th>
                     <td mat-cell *matCellDef="let element">
-                      {{ element.amount | currency: " " }}
+                      {{ element.costPrice | currency: " " }}
                     </td>
                   </ng-container>
     

@@ -19,7 +19,6 @@ import { DeleteItemComponent } from 'src/app/modules/shared/delete-item/delete-i
 export class ListCategoryComponent implements OnInit {
 
   shop = JSON.parse(localStorage.getItem("shop"));
-
   displayedColumns: Array<string> = ['name','description','status','createdAt', 'actions'];
   dataSource: MatTableDataSource<any> ;
   categories: any;
