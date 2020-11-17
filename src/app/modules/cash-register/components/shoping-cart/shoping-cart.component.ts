@@ -5,6 +5,10 @@ import { CashRegisterService } from '../../cash-register.service';
 import { AddItemComponent } from '../add-item/add-item.component';
 import { ReceiptComponent } from '../receipt/receipt.component';
 
+import pdfMake from "pdfmake/build/pdfmake";  
+import pdfFonts from "pdfmake/build/vfs_fonts";  
+pdfMake.vfs = pdfFonts.pdfMake.vfs;   
+
 @Component({
   selector: 'app-shoping-cart',
   templateUrl: './shoping-cart.component.html',
@@ -108,6 +112,8 @@ export class ShopingCartComponent implements OnInit {
       if(result.data){
         this.cart = [];
         this.grandTotal = 0;
+        this.fetchReceipt(result.data.id);
+        
       }
       
     }catch(e){
@@ -119,5 +125,62 @@ export class ShopingCartComponent implements OnInit {
   }
 
 
+  async fetchReceipt(id){
+    try{
+      this.ngxService.start();
+      let result = await this._transactionService.fetchItem(id);
+      if(result.data){
+       
+        this.generatePDF(result.data.receipt, result.data.transactions);
+      }
+      
+    }catch(e){
+      console.error(e);
+    }finally{
+      this.ngxService.stop();
+    }
+  }
+
+
+  generatePDF(receipt, transactions) {  
+    let docDefinition = {  
+      header: {  
+        text: 'ZWIPE IMS',  
+        fontSize: 16,  
+        alignment: 'center'
+      },  
+      content: [
+        {
+          columns: [  
+            [  
+                {
+                  table: {  
+                    headerRows: 1,  
+                    widths: ['*', 'auto', 'auto', 'auto'],  
+                    body: [  
+                        ['Product', 'Price', 'Quantity', 'Amount'],  
+                        ...transactions.map(p => ([p.productName, p.sellingPrice, p.quantity, (p.amount).toFixed(2)])),  
+                        [{ text: 'Total Amount', colSpan: 3 }, {}, {}, (receipt.amount).toFixed(2)]  
+                    ]  
+                }
+                }
+            ],  
+            [  
+                {  
+                    text: `Date: ${new Date(receipt.createdAt)}`,  
+                    alignment: 'right'  
+                },  
+                {  
+                    text: `Receipt Id : ${((Math.random() * 1000).toFixed(0))}`,  
+                    alignment: 'right'  
+                }  
+            ]  
+        ]
+        }
+      ]  
+    };  
+   
+    pdfMake.createPdf(docDefinition).open();  
+  }  
 
 }
