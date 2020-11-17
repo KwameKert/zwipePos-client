@@ -171,7 +171,7 @@ export class ShopingCartComponent implements OnInit {
                     alignment: 'right'  
                 },  
                 {  
-                    text: `Receipt Id : ${((Math.random() * 1000).toFixed(0))}`,  
+                    text: `Receipt Id : ${receipt.receiptCode}`,  
                     alignment: 'right'  
                 }  
             ]  
