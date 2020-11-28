@@ -47,19 +47,22 @@ export class ShopingCartComponent implements OnInit {
   }
 
   addItemQuantity(index: number){
+    
     let item = this.cart[index];
-    item.itemQuantity +=1;
-    item.total = item.itemQuantity * item.itemPrice;
+    console.log("item here", item)
+    item.quantity +=1;
+    item.total = item.quantity * item.amount;
     this.cart[index] = item;
+    console.log(this.cart)
     this.updateGradTotal()
   //  console.log(this.cart)
   }
 
   subtractItemQuantity(index: number){
     let item = this.cart[index];
-    if(item.itemQuantity >1){
-      item.itemQuantity -=1;
-      item.total = item.itemQuantity * item.itemPrice;
+    if(item.quantity >1){
+      item.quantity -=1;
+      item.total = item.quantity * item.amount;
       this.cart[index] = item;
       this.updateGradTotal()
     }
