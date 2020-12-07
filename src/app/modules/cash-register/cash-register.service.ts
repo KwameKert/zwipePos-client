@@ -17,5 +17,8 @@ export class CashRegisterService extends CrudService<any>{
   fetchTransactions(id: Number){
     return this._httpClient.get<ApiResponse<any>>(`${this._url}/transaction/shop/${id}`).toPromise();
   }
+  viewTransaction(id: Number){
+    return this._httpClient.get<ApiResponse<any>>(`${this._url}/transaction/receipt/${id}`).toPromise();
+  }
 
 }

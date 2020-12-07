@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { CashRegisterService } from '../../cash-register.service';
+import { ViewReceiptComponent } from '../view-receipt/view-receipt.component';
 
 @Component({
   selector: 'app-receipt-list',
@@ -19,7 +22,7 @@ export class ReceiptListComponent implements OnInit {
   
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor(private _transactionService: CashRegisterService) { }
+  constructor(private _transactionService: CashRegisterService, private dialog: MatDialog, private ngxService: NgxUiLoaderService) { }
 
   ngOnInit(): void {
     this.fetchReceipts();
@@ -58,5 +61,23 @@ applyFilter(event: Event) {
 }
 
 
+viewReceipt(id: number){
+  const dialogRef = this.dialog.open(ViewReceiptComponent, {
+    width: '900px',
+    height: '420px',
+    data: id
+        })
+  dialogRef.afterClosed().subscribe(result => {
+    if(result.success){
+      // this.cart.push(result.data);
+      //  this.updateGradTotal()
+    }
+   
+  }, error=>{
+    // this._toastr.error("Oops an error. 🥺","",{
+    //   timeOut:2000
+    // })
+  });
+}
 
 }

@@ -1,0 +1,49 @@
+<h3 mat-dialog-title>View Receipt 
+</h3>
+
+<div mat-dialog-content class="container">
+    <div class="row" *ngIf="receipt">
+        <div class="col-4">
+            <h4>Receipt Details</h4>
+            <p ><b>Receipt Code: </b>{{ receipt.receiptCode}}</p> 
+            <p ><b>Customer Name: </b>{{ receipt.customerName}}</p> 
+            <p ><b>Customer Phone: </b>{{ receipt.customerPhone}}</p> 
+            <p ><b>Total Amount  (₵): </b>{{ receipt.amount}}</p> 
+        </div>
+        <div class="col-8">
+            <h4>Receipt Details</h4>
+            <table class="table table-striped" *ngIf="transactions">
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>Product</td>
+                        <td>Quantity</td>
+                        <td>Amount  (₵)</td>
+                        <td>Profit  (₵)</td>
+
+                      
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let item of transactions">
+                        <td>{{item.id}}</td>
+                        <td>{{item.productName}}</td>
+                        <td>{{item.quantity }}</td>
+                        <td>{{item.amount   | currency: " " }}</td>
+                        <td>{{item.profit   | currency: " "}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- <p class="lead"><b>Description: </b>}</p>  -->
+</div>
+
+<div mat-dialog-actions class="float-right">
+    <button
+    type="button"
+    class="btn btn-danger waves-effect waves-light  float-right"
+    (click)="close()" 
+  ><i class="mdi mdi-close"></i> Close</button>
+</div>

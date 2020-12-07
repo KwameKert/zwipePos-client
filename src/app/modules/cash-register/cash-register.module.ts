@@ -5,11 +5,12 @@ import { SharedModule } from '../shared/shared.module';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { ReceiptComponent } from './components/receipt/receipt.component';
 import { ReceiptListComponent } from './components/receipt-list/receipt-list.component';
+import { ViewReceiptComponent } from './components/view-receipt/view-receipt.component';
 
 
 
 @NgModule({
-  declarations: [ShopingCartComponent, AddItemComponent, ReceiptComponent, ReceiptListComponent],
+  declarations: [ShopingCartComponent, AddItemComponent, ReceiptComponent, ReceiptListComponent, ViewReceiptComponent],
   imports: [
     CommonModule, 
     SharedModule
