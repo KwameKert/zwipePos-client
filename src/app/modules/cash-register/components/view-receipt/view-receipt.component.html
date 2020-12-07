@@ -11,13 +11,12 @@
             <p ><b>Total Amount  (₵): </b>{{ receipt.amount}}</p> 
         </div>
         <div class="col-8">
-            <h4>Receipt Details</h4>
+            <h4>Transaction Details</h4>
             <table class="table table-striped" *ngIf="transactions">
                 <thead>
                     <tr>
                         <td>#</td>
                         <td>Product</td>
-                        <td>Quantity</td>
                         <td>Amount  (₵)</td>
                         <td>Profit  (₵)</td>
 
@@ -30,7 +29,6 @@
                         <td>{{item.id}}</td>
                         <td>{{item.productName}}</td>
                         <td>{{item.quantity }}</td>
-                        <td>{{item.amount   | currency: " " }}</td>
                         <td>{{item.profit   | currency: " "}}</td>
                     </tr>
                 </tbody>
