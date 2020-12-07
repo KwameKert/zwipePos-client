@@ -112,13 +112,13 @@
   <div class="col-4">
     <div class="form-group-custom">
       <label for="name">Weight (kg)</label>
-      <input type="text" class="form-control" formControlName="weight" />
+      <input type="number" class="form-control" formControlName="weight" />
     </div>
   </div>
   <div class="col-4">
     <div class="form-group-custom">
       <label for="name">Size (in)</label>
-      <input type="text" class="form-control" formControlName="size" />
+      <input type="number" class="form-control" formControlName="size" />
     </div>
   </div>
 </div>
@@ -132,7 +132,7 @@
         !productForm.get('costPrice').valid
     }">
       <label for="name">Costing Price (₵) </label>
-      <input type="text" class="form-control" formControlName="costPrice" />
+      <input type="number" class="form-control" formControlName="costPrice" />
       <span
       class="error"
       *ngIf="
@@ -151,7 +151,7 @@
         !productForm.get('sellingPrice').valid
     }">
       <label for="name">Selling Price (₵) </label>
-      <input type="text" class="form-control" formControlName="sellingPrice" />
+      <input type="number" class="form-control" formControlName="sellingPrice" />
       <span
       class="error"
       *ngIf="
