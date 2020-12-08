@@ -10,7 +10,7 @@ import { CrudService } from '../shared/service';
 export class UserService extends CrudService<any>{
   private _url :String = environment.api_host;
   constructor(public _httpClient: HttpClient) { 
-    super(_httpClient, "product")
+    super(_httpClient, "user")
   }
 
   fetchShopProducts(id: Number){
@@ -20,4 +20,10 @@ export class UserService extends CrudService<any>{
   fetchUsers(id: Number){
     return this._httpClient.get<ApiResponse<any>>(`${this._url}/user/shop/${id}`).toPromise();
   }
+
+  saveUser(data: any){
+    return this._httpClient.post<ApiResponse<any>>(`${this._url}/user/`, data).toPromise();
+  }
+
+
 }

@@ -62,8 +62,8 @@ export class ListUsersComponent implements OnInit {
 
 addUser(){
   const dialogRef = this.dialog.open(AddUserComponent, {
-    width: '900px',
-    height: '600px'
+    width: '600px',
+    height: '350px'
   })
   dialogRef.afterClosed().subscribe(result => {
    this.fetchUsers();
@@ -76,8 +76,8 @@ addUser(){
 
 viewUser(data: any){
   const dialogRef = this.dialog.open(ViewUserComponent, {
-    width: '600px',
-    height: '420px',
+    width: '450px',
+    height: '550px',
     data
   })
   dialogRef.afterClosed().subscribe(result => {
@@ -92,8 +92,8 @@ viewUser(data: any){
  
   editUser(data: any){
     const dialogRef = this.dialog.open(AddUserComponent, {
-      width: '800px',
-      height: '520px',
+      width: '600px',
+      height: '350px',
       data
     })
     dialogRef.afterClosed().subscribe(result => {
@@ -107,7 +107,7 @@ viewUser(data: any){
 
     deleteUser(_id: Number){
     let data = {
-    model: "product", _id, word: "DELETe user"
+    model: "user", _id, word: "DELETe user"
     }
     const dialogRef = this.dialog.open(DeleteItemComponent, {
       width: '550px',

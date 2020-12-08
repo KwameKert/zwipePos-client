@@ -1,1 +1,165 @@
-<p>add-user works!</p>
+<h3 mat-dialog-title>Add User</h3>
+<form [formGroup]="userForm" class="needs-validation" (ngSubmit)="saveUser()">
+  <mat-dialog-content>
+      <div class="row">
+          <div class="col-6">
+            <div
+            class="form-group-custom"
+            [ngClass]="{
+              'has-error':
+                userForm.get('username').touched && !userForm.get('username').valid
+            }"
+          >
+            <label for="username">Username</label>
+            <input type="text" class="form-control" formControlName="username" />
+            <span
+              class="error"
+              *ngIf="
+                userForm.get('username').touched && !userForm.get('username').valid
+              "
+            >
+              username is required
+            </span>
+          </div>
+          </div>
+          <div class="col-6">
+            <div
+            class="form-group-custom"
+            [ngClass]="{
+              'has-error':
+                userForm.get('fullName').touched && !userForm.get('fullName').valid
+            }"
+          >
+            <label for="fullName">Full Name</label>
+            <input type="text" class="form-control" formControlName="fullName" />
+            <span
+              class="error"
+              *ngIf="
+                userForm.get('fullName').touched && !userForm.get('fullName').valid
+              "
+            >
+              Full Name is required
+            </span>
+          </div>
+          </div>
+      </div>
+  
+
+      <div class="row">
+          <div class="col-6">
+            <div
+            class="form-group-custom"
+            [ngClass]="{
+              'has-error':
+                userForm.get('phoneNumber').touched && !userForm.get('phoneNumber').valid
+            }"
+          >
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text" class="form-control" formControlName="phoneNumber" />
+            <span
+              class="error"
+              *ngIf="
+                userForm.get('phoneNumber').touched && !userForm.get('phoneNumber').valid
+              "
+            >
+              Phone number is required
+            </span>
+          </div>
+          </div>
+          <div class="col-6">
+            <div
+            class="form-group-custom"
+            [ngClass]="{
+              'has-error':
+                userForm.get('email').touched && !userForm.get('email').valid
+            }"
+          >
+            <label for="email">Email</label>
+            <input type="email" class="form-control" formControlName="email" />
+            <span
+              class="error"
+              *ngIf="userForm.get('email').touched && !userForm.get('email').valid"
+            >
+              Email is required
+            </span>
+          </div>
+          </div>
+      </div>
+   
+
+
+<div class="row">
+    <div class="col-6">
+        <div
+        class="form-group"
+        [ngClass]="{
+          'has-error':
+            userForm.get('role').touched && !userForm.get('role').valid
+        }"
+      >
+        <div class="form-label">Role</div>
+        <select
+          name="role"
+          formControlName="role"
+          class="form-control"
+          required
+        >
+          <option value="MERCHANT">Merchant(Admin)</option>
+          <option value="SALES_REP">Sales Rep</option>
+        </select>
+        <span
+          class="error"
+          *ngIf="userForm.get('role').touched && !userForm.get('role').valid"
+        >
+          role is required
+        </span>
+      </div>
+    </div>
+    <div class="col-6">
+        <div
+        class="form-group"
+        [ngClass]="{
+          'has-error':
+            userForm.get('status').touched && !userForm.get('status').valid
+        }"
+      >
+        <div class="form-label">Status</div>
+        <select
+          name="category"
+          formControlName="status"
+          class="form-control"
+          required
+        >
+          <option value="active">Active</option>
+          <option value="inactive">Deactivate</option>
+        </select>
+        <span
+          class="error"
+          *ngIf="userForm.get('status').touched && !userForm.get('status').valid"
+        >
+          status is required
+        </span>
+      </div>
+    </div>
+</div>
+   
+  
+  </mat-dialog-content>
+
+  <div mat-dialog-actions class="float-right">
+    <button
+      type="button"
+      class="btn btn-danger waves-effect waves-light float-right"
+      (click)="close()"
+    >
+      <i class="mdi mdi-close"></i> Cancel
+    </button>
+    <button
+      type="submit"
+      class="btn btn-success waves-effect waves-light ml-2 float-right"
+      [disabled]="!userForm.valid"
+    >
+      <i class="mdi mdi-check"></i> Save
+    </button>
+  </div>
+</form>
