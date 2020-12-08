@@ -7,20 +7,17 @@ import { CrudService } from '../shared/service';
 @Injectable({
   providedIn: 'root'
 })
-export class CashRegisterService extends CrudService<any>{
-
+export class UserService extends CrudService<any>{
   private _url :String = environment.api_host;
   constructor(public _httpClient: HttpClient) { 
-    super(_httpClient, "transaction")
+    super(_httpClient, "product")
   }
 
-  fetchTransactions(id: Number){
-    return this._httpClient.get<ApiResponse<any>>(`${this._url}/transaction/shop/${id}`).toPromise();
-  }
-  viewTransaction(id: Number){
-    return this._httpClient.get<ApiResponse<any>>(`${this._url}/transaction/receipt/${id}`).toPromise();
+  fetchShopProducts(id: Number){
+    return this._httpClient.get<ApiResponse<any>>(`${this._url}/product/shop/${id}`).toPromise();
   }
 
-  
-
+  fetchUsers(id: Number){
+    return this._httpClient.get<ApiResponse<any>>(`${this._url}/user/shop/${id}`).toPromise();
+  }
 }

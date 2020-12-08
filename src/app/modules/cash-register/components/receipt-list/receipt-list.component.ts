@@ -62,22 +62,12 @@ applyFilter(event: Event) {
 
 
 viewReceipt(id: number){
-  const dialogRef = this.dialog.open(ViewReceiptComponent, {
+  this.dialog.open(ViewReceiptComponent, {
     width: '900px',
     height: '420px',
     data: id
         })
-  dialogRef.afterClosed().subscribe(result => {
-    if(result.success){
-      // this.cart.push(result.data);
-      //  this.updateGradTotal()
-    }
-   
-  }, error=>{
-    // this._toastr.error("Oops an error. 🥺","",{
-    //   timeOut:2000
-    // })
-  });
+ 
 }
 
 }

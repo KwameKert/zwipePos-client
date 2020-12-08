@@ -7,6 +7,8 @@ import { ListCategoryComponent } from 'src/app/modules/category/components/list-
 import { ListProductComponent } from 'src/app/modules/product/component/list-product/list-product.component';
 import { ShopingCartComponent } from 'src/app/modules/cash-register/components/shoping-cart/shoping-cart.component';
 import { ReceiptListComponent } from 'src/app/modules/cash-register/components/receipt-list/receipt-list.component';
+import { TitheComponent } from 'src/app/modules/contributions/tithe/tithe.component';
+import { ListUsersComponent } from 'src/app/modules/user/components/list-users/list-users.component';
 
 
 const routes: Routes = [
@@ -78,6 +80,40 @@ const routes: Routes = [
         },
         {
           label: 'transaction',
+          url: ''
+        }
+      ]
+    },
+  },
+  {
+    path: 'tithe',
+    component: TitheComponent,
+    data: {
+      title: 'tithe',
+      breadcrumb: [
+        {
+          label: 'home',
+          url: '/merchant/dashboard'
+        },
+        {
+          label: 'tithe',
+          url: ''
+        }
+      ]
+    },
+  },
+  {
+    path: 'users',
+    component: ListUsersComponent,
+    data: {
+      title: 'users',
+      breadcrumb: [
+        {
+          label: 'home',
+          url: '/merchant/dashboard'
+        },
+        {
+          label: 'users',
           url: ''
         }
       ]

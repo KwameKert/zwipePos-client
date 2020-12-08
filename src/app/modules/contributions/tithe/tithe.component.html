@@ -1,0 +1,109 @@
+
+<div class="row">
+    <div class="col-md-7">
+      <div class="card-box">
+        <h4 class="header-title mb-3">Compute Tithe</h4>
+    
+<form
+  [formGroup]="titheForm"
+  class="needs-validation"
+  (ngSubmit)="computeTithe(titheForm.value)"
+>
+
+  <div class="row">
+    <div class="col-6">
+      <div
+      class="form-group-custom"
+      [ngClass]="{
+        'has-error':
+          titheForm.get('startDate').touched && !titheForm.get('startDate').valid
+      }"
+    >
+      <label for="name">Start Date</label>
+      <input type="date" class="form-control" formControlName="startDate" />
+      <span
+        class="error"
+        *ngIf="
+          titheForm.get('startDate').touched && !titheForm.get('startDate').valid
+        "
+      >
+        start date is required
+      </span>
+    </div>
+    </div>
+    <div class="col-6">
+      <div
+      class="form-group-custom"
+      [ngClass]="{
+        'has-error':
+          titheForm.get('endDate').touched &&
+          !titheForm.get('endDate').valid
+      }"
+    >
+      <label for="name">Category</label>
+      <input type="date" class="form-control" formControlName="endDate" />
+   
+      <span
+        class="error"
+        *ngIf="
+          titheForm.get('endDate').touched && !titheForm.get('endDate').valid"
+      >
+        category is required
+      </span>
+     
+    </div>
+    </div>
+  </div>
+ 
+
+ 
+<div class="row">
+    <div class="col-6">
+    <div
+    class="form-group-custom"
+    [ngClass]="{
+        'has-error':
+        titheForm.get('percentage').touched &&
+        !titheForm.get('percentage').valid
+    }"
+    >
+    <label for="name">Percentage (%)</label>
+    <input type="number" class="form-control" formControlName="percentage" />
+    <span
+        class="error"
+        *ngIf="
+        titheForm.get('percentage').touched &&
+        !titheForm.get('percentage').valid
+        "
+    >
+        percentage is required
+    </span>
+    </div>
+</div>
+</div>
+ <div class="row ">
+     <div class="col-12">
+        <button
+        type="submit"
+        class="btn btn-success waves-effect waves-light mt-3 btn-block "
+        [disabled]="!titheForm.valid"
+        >
+        <i class=" fas fa-calculator"></i> Calculate
+        </button>
+     </div>
+    
+ </div>
+
+</form>
+
+</div>
+</div>
+
+<div class="col-md-4 justify-content-center">
+    <div class="card-box ">
+        <h4>Amount to Tithe (₵) </h4>
+        <p class="text-center display-4">{{amount | currency: ' '}}</p>
+    </div>
+ 
+</div>
+</div>

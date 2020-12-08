@@ -7,6 +7,8 @@ import { ListCategoryComponent } from 'src/app/modules/category/components/list-
 import { CategoryModule } from 'src/app/modules/category/category.module';
 import { ProductModule } from 'src/app/modules/product/product.module';
 import { CashRegisterModule } from 'src/app/modules/cash-register/cash-register.module';
+import { ContributionsModule } from 'src/app/modules/contributions/contributions.module';
+import { UserModule } from 'src/app/modules/user/user.module';
 
 
 
@@ -19,7 +21,9 @@ import { CashRegisterModule } from 'src/app/modules/cash-register/cash-register.
     ProductModule,
     CashRegisterModule,
     SharedModule,
-    MerchantRoutingModule
+    MerchantRoutingModule,
+    ContributionsModule, 
+    UserModule
   ]
 })
 export class MerchantModule { }

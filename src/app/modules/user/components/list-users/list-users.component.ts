@@ -3,20 +3,20 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { DeleteItemComponent } from 'src/app/modules/shared/delete-item/delete-item.component';
-import { ProductService } from '../../product.service';
-import { AddProductComponent } from '../add-product/add-product.component';
-import { ViewProductComponent } from '../view-product/view-product.component';
+import { UserService } from '../../user.service';
+import { AddUserComponent } from '../add-user/add-user.component';
+import { ViewUserComponent } from '../view-user/view-user.component';
 
 @Component({
-  selector: 'app-list-product',
-  templateUrl: './list-product.component.html',
-  styleUrls: ['./list-product.component.scss']
+  selector: 'app-list-users',
+  templateUrl: './list-users.component.html',
+  styleUrls: ['./list-users.component.scss']
 })
-export class ListProductComponent implements OnInit {
+export class ListUsersComponent implements OnInit {
 
   shop = JSON.parse(localStorage.getItem("shop"));
 
-  displayedColumns: Array<string> = ['name','category','color','quantity', 'cost price','status','createdAt', 'actions'];
+  displayedColumns: Array<string> = ['role','fullName','phoneNumber','email','status','createdAt', 'actions'];
   dataSource: MatTableDataSource<any> ;
   categories: any;
   isEmpty = false;
@@ -24,10 +24,10 @@ export class ListProductComponent implements OnInit {
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor(private productService: ProductService, public dialog: MatDialog) { }
+  constructor(private userService: UserService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.fetchProducts();
+    this.fetchUsers();
   }
 
   applyFilter(event: Event) {
@@ -39,10 +39,10 @@ export class ListProductComponent implements OnInit {
     }
   }
 
-  async fetchProducts(){
+  async fetchUsers(){
     try{
       this.isLoading  = true;
-      let response = await this.productService.fetchShopProducts(this.shop.id);
+      let response = await this.userService.fetchUsers(this.shop.id);
       if(response && response.data.length != 0){
         console.log(response.data)
         this.dataSource = new MatTableDataSource(response.data);
@@ -60,13 +60,13 @@ export class ListProductComponent implements OnInit {
     }
 }
 
-addProduct(data: any){
-  const dialogRef = this.dialog.open(AddProductComponent, {
+addUser(){
+  const dialogRef = this.dialog.open(AddUserComponent, {
     width: '900px',
     height: '600px'
   })
   dialogRef.afterClosed().subscribe(result => {
-   this.fetchProducts();
+   this.fetchUsers();
   }, error=>{
     // this._toastr.error("Oops an error. 🥺","",{
     //   timeOut:2000
@@ -74,8 +74,8 @@ addProduct(data: any){
   });
 }
 
-viewProduct(data: any){
-  const dialogRef = this.dialog.open(ViewProductComponent, {
+viewUser(data: any){
+  const dialogRef = this.dialog.open(ViewUserComponent, {
     width: '600px',
     height: '420px',
     data
@@ -90,14 +90,14 @@ viewProduct(data: any){
 }
 
  
-  editProduct(data: any){
-    const dialogRef = this.dialog.open(AddProductComponent, {
+  editUser(data: any){
+    const dialogRef = this.dialog.open(AddUserComponent, {
       width: '800px',
       height: '520px',
       data
     })
     dialogRef.afterClosed().subscribe(result => {
-     this.fetchProducts();
+     this.fetchUsers();
     }, error=>{
       // this._toastr.error("Oops an error. 🥺","",{
       //   timeOut:2000
@@ -105,9 +105,9 @@ viewProduct(data: any){
     });
   }
 
-    deleteProduct(_id: Number){
+    deleteUser(_id: Number){
     let data = {
-    model: "product", _id, word: "DELETe product"
+    model: "product", _id, word: "DELETe user"
     }
     const dialogRef = this.dialog.open(DeleteItemComponent, {
       width: '550px',
@@ -117,10 +117,11 @@ viewProduct(data: any){
 
     dialogRef.afterClosed().subscribe(result => {
       if(result.event){
-        this.fetchProducts();
+        this.fetchUsers();
       }else{
 
       }
     });
   }
+
 }

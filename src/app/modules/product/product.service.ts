@@ -21,6 +21,7 @@ export interface Product {
   weight: number,
   color: String,
   minQuantity: number,
+  commission: Number,
 }
 
 @Injectable({

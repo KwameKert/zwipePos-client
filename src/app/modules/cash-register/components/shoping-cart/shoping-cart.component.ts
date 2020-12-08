@@ -22,7 +22,7 @@ export class ShopingCartComponent implements OnInit {
   cart: Array<any> = [];
   currentDate = new Date();
   receiptId = `${new Date().getFullYear()}${Math.floor(Math.random() * (3000 - 1000) + 4)}`;
-
+  userId: number = JSON.parse(localStorage.getItem('user')).id 
   constructor(private dialog: MatDialog, private _transactionService: CashRegisterService,  private ngxService: NgxUiLoaderService) { }
 
   ngOnInit(): void {
@@ -91,6 +91,7 @@ export class ShopingCartComponent implements OnInit {
       if(result.success){
         let data = {
           shopId: this.shop.id,
+          userId: this.userId,
           amount: this.grandTotal,
           customerName: result.data.customerName,
           customerPhone: result.data.customerPhone,
@@ -131,7 +132,7 @@ export class ShopingCartComponent implements OnInit {
   async fetchReceipt(id){
     try{
       this.ngxService.start();
-      let result = await this._transactionService.fetchItem(id);
+      let result = await this._transactionService.viewTransaction(id);
       if(result.data){
        
         this.generatePDF(result.data.receipt, result.data.transactions);

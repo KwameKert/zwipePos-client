@@ -125,7 +125,7 @@
   
 
 <div class="row">
-  <div class="col-6">
+  <div class="col-4">
     <div class="form-group-custom"  [ngClass]="{
       'has-error':
         productForm.get('costPrice').touched &&
@@ -144,7 +144,7 @@
     </span>
     </div>
   </div>
-  <div class="col-6">
+  <div class="col-4">
     <div class="form-group-custom"  [ngClass]="{
       'has-error':
         productForm.get('sellingPrice').touched &&
@@ -157,6 +157,25 @@
       *ngIf="
         productForm.get('sellingPrice').touched &&
         !productForm.get('sellingPrice').valid
+      "
+    >
+      price is required
+    </span>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="form-group-custom"  [ngClass]="{
+      'has-error':
+        productForm.get('commission').touched &&
+        !productForm.get('commission').valid
+    }">
+      <label for="name">Commission (%) </label>
+      <input type="number" class="form-control" formControlName="commission" />
+      <span
+      class="error"
+      *ngIf="
+        productForm.get('commission').touched &&
+        !productForm.get('commission').valid
       "
     >
       price is required

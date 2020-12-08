@@ -13,9 +13,9 @@ export class ViewReceiptComponent implements OnInit {
   transactions: Array<any>;
   receipt: any;
   constructor(
-    private ngxService: NgxUiLoaderService,
     private _transactionService: CashRegisterService,
     public dialogRef: MatDialogRef<ViewReceiptComponent>,
+    private ngxService: NgxUiLoaderService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
  
  
@@ -24,12 +24,11 @@ export class ViewReceiptComponent implements OnInit {
   }
 
   async loadReceipt(){
-    try{
-     
+    try{  
      this.ngxService.start();
      console.log("loading receipt")
-      let response = await this._transactionService.viewTransaction(this.data);
-      if(response && response.data.length != 0){
+     let response = await this._transactionService.viewTransaction(this.data);
+     if(response && response.data.length != 0){
         this.transactions = response.data.transactions
         this.receipt = response.data.receipt
       

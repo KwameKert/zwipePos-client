@@ -41,6 +41,7 @@ export class AddProductComponent implements OnInit {
         quantity: new FormControl('', Validators.required),
         minQuantity: new FormControl('', Validators.required),
         weight: new FormControl('', Validators.required),
+        commission: new FormControl('', Validators.required),
         size: '',
         color: ''
       })
@@ -54,11 +55,12 @@ export class AddProductComponent implements OnInit {
       description: data.description,
       status: new FormControl(data.status, Validators.required),
       shopId: this.shopId,
-      sellingPrice: new FormControl('', Validators.required),
-      costPrice: new FormControl('', Validators.required),
+      sellingPrice: new FormControl(data.sellingPrice, Validators.required),
+      costPrice: new FormControl(data.costPrice, Validators.required),
       categoryId: new FormControl(data.categoryId, Validators.required),
       quantity: new FormControl(data.quantity, Validators.required),
       minQuantity: new FormControl(data.minQuantity, Validators.required),
+      commission: new FormControl(data.commission, Validators.required),
       weight: data.weight,
       size: data.size,
       color: data.color
