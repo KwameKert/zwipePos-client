@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../dashboard.service';
 
 @Component({
-  selector: 'app-merchant',
-  templateUrl: './merchant.component.html',
-  styleUrls: ['./merchant.component.scss']
+  selector: 'app-sales-person',
+  templateUrl: './sales-person.component.html',
+  styleUrls: ['./sales-person.component.scss']
 })
-export class MerchantComponent implements OnInit {
+export class SalesPersonComponent implements OnInit {
+
   totalProducts: Number = 0;
   totalCategories: Number = 0;
   totalTransactions: Number = 0;
@@ -34,4 +35,5 @@ export class MerchantComponent implements OnInit {
       console.error(e);
     }
   }
+
 }

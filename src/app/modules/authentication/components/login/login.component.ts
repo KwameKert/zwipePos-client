@@ -40,10 +40,13 @@ ngOnInit() {
               this._toastr.success("Login successful", "Success  😊", {  timeOut:2000});
               return this._router.navigate(['/admin/dashboard']);
               break;
-
             case "MERCHANT":
                 this._toastr.success("Login as Merchant", "Success  😊", {  timeOut:2000});
                 return this._router.navigate(['/merchant/dashboard']);
+                break;     
+            case "SALES_REP":
+                this._toastr.success("Login as Sales Rep", "Success  😊", {  timeOut:2000});
+                return this._router.navigate(['/sales/dashboard']);
                 break;     
             default:
               this._toastr.success("Login successful", "Success  😊", {  timeOut:2000});

@@ -9,6 +9,7 @@
             <p ><b>Customer Name: </b>{{ receipt.customerName}}</p> 
             <p ><b>Customer Phone: </b>{{ receipt.customerPhone}}</p> 
             <p ><b>Total Amount  (₵): </b>{{ receipt.amount}}</p> 
+            <p ><b>Total Profit  (₵): </b>{{ receipt.totalProfit}}</p> 
         </div>
         <div class="col-8">
             <h4>Transaction Details</h4>
@@ -17,7 +18,8 @@
                     <tr>
                         <td>#</td>
                         <td>Product</td>
-                        <td>Amount  (₵)</td>
+                        <td>Quantity</td>
+                        <td>Selling Price  (₵)</td>
                         <td>Profit  (₵)</td>
 
                       
@@ -28,6 +30,7 @@
                     <tr *ngFor="let item of transactions">
                         <td>{{item.id}}</td>
                         <td>{{item.productName}}</td>
+                        <td>{{item.quantity}}</td>
                         <td>{{item.amount }}</td>
                         <td>{{item.profit   | currency: " "}}</td>
                     </tr>

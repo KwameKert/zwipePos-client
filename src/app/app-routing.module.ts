@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { AuthLayoutComponent, DefaultComponent } from './layouts';
+import { SalesComponent } from './layouts/sales/sales.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,13 @@ const routes: Routes = [
     component: DefaultComponent,
     loadChildren: () => import('./views/merchant/merchant.module')
                        .then(m => m.MerchantModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'sales', 
+    component: SalesComponent,
+    loadChildren: () => import('./views/sales-rep/sales-rep.module')
+                       .then(m => m.SalesRepModule),
     canActivate: [AuthGuard]
   },
   // {

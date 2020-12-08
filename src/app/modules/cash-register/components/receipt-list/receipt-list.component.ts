@@ -15,7 +15,7 @@ export class ReceiptListComponent implements OnInit {
 
   shop = JSON.parse(localStorage.getItem("shop"));
   displayedColumns: Array<string> = ['code','amount','customerName','createdAt', 'customerPhone', 'actions'];
-  dataSource: MatTableDataSource<any> ;
+  dataSource: MatTableDataSource<any> = null ;
   receipts: any;
   isEmpty = false;
   isLoading = false;
@@ -34,11 +34,9 @@ export class ReceiptListComponent implements OnInit {
       this.isLoading  = true;
       let response = await this._transactionService.fetchTransactions(this.shop.id);
       if(response && response.data.length != 0){
-        console.log(response.data)
-        this.dataSource = new MatTableDataSource(response.data);
-     //   console.log(this.dataSource)
-        this.dataSource.paginator = this.paginator;
-     
+        let result = response.data
+        this.dataSource = new MatTableDataSource(result);
+        this.dataSource.paginator = this.paginator;  
       }else{
         this.isEmpty = true;
       }

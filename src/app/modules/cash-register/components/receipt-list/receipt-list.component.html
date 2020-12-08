@@ -29,7 +29,7 @@
           </div>
   
           <ng-template #elseBlock>
-            <div class="table-responsive">
+            <div class="table-responsive" *ngIf="!isEmpty">
               <table
                 mat-table
                 [dataSource]="dataSource"
@@ -107,16 +107,13 @@
                 ></tr>
               </table>
             </div>
-          </ng-template>
-          <div class="row justify-content-center mt-3" style="width: 100%">
-            <div class="">
-              <mat-paginator
-                [pageSizeOptions]="[5, 10, 20]"
-                showFirstLastButtons
-                class="float-right"
-              ></mat-paginator>
-            </div>
-          </div>
+
+            <mat-paginator
+            [pageSizeOptions]="[5, 10, 20]"
+            showFirstLastButtons
+            class="float-right"
+          ></mat-paginator>
+          </ng-template>      
         </div>
         <!-- end card-box-->
         <div class="row justify-content-center text-center" style="width: 100%">

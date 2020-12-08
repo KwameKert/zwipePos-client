@@ -11,6 +11,7 @@ import { DatePipe } from '@angular/common';
 import { AuthInterceptor, ErrorInterceptor } from './interceptors';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { NgDynamicBreadcrumbModule } from 'ng-dynamic-breadcrumb';
+import { SalesComponent } from './layouts/sales/sales.component';
 //import { NgxUiLoaderModule } from 'ngx-ui-loader/lib/core/ngx-ui-loader.module';
 
 
@@ -22,7 +23,8 @@ import { NgDynamicBreadcrumbModule } from 'ng-dynamic-breadcrumb';
      FooterComponent, 
      AuthLayoutComponent,
      PageTitleComponent,
-     DefaultComponent
+     DefaultComponent,
+     SalesComponent
   ],
   imports: [
     BrowserModule,
