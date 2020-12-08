@@ -3,9 +3,7 @@ import {
     HttpInterceptor,
     HttpRequest,
     HttpResponse,
-    HttpHandler,
-    HttpEvent,
-    HttpErrorResponse, HttpHeaderResponse, HttpProgressEvent, HttpSentEvent, HttpUserEvent
+    HttpHandler,HttpHeaderResponse, HttpProgressEvent, HttpSentEvent, HttpUserEvent
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import {tap, map, catchError } from 'rxjs/operators';
@@ -35,17 +33,14 @@ export interface Response{
 
         return next.handle(authReq).pipe(
           tap((response: HttpResponse<any>) => {
-            // let message = response.body.message
-            //let hold = response.body;
+          
             if(response.type !=0){
-            
-            
-           // console.log(response)
             switch (response.body.status) {
               
               case 201: //Created
                this._toastr.success("Record added successfully","Success  👍");
                 break;
+              
               case 200: //Success
                 switch (req.method) {
                   case 'PUT':
@@ -53,10 +48,15 @@ export interface Response{
                     break;
                   case 'DELETE':
                     this._toastr.success("Record deleted successfully","Success  👍");
-                  // default:
-                  //   this._toastr.clear()
-                  //   break;
+                    break; 
                 }
+                break;
+                case 400:
+                  this._toastr.info(response.body.message, "Oops 🥺",{  timeOut:4000});
+                  break;
+                case 417:
+                  this._toastr.error(response.body.message, "Oops 🥺",{  timeOut:4000});
+                  break;
               default:
                 break;
             }

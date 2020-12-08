@@ -16,10 +16,10 @@ intercept(
       ): Observable<HttpEvent<any>> {
     
         return next.handle(req).pipe(
-         
             catchError((err: any) => {
                 if(err instanceof HttpErrorResponse) {
                     let status = err.status;
+                    //console.log(status)
 
                     switch(status){
                         case 400:
@@ -37,22 +37,7 @@ intercept(
                             this._toastr.error(error, "Oops 🥺", {  timeOut:4000})
                     }
 
-                    // if(err.status == 403){
-                    //     this._toastr.error("Please authenticate", "Oops 🥺", {  timeOut:4000});
-                    //     this._router.navigate(['/login']);
-                    //     this._authService.logout();
-
-                    // }else if(err.status == 400){
-                    //     this._toastr.info( err.error.message, "Oops 🥺", {  timeOut:4000});
-                        
-                    // }else{
-
-                    //     const error = err.error.message || err.statusText;
-                    //     console.log(error)
-                    //   this._toastr.error(error, "Oops 🥺", {  timeOut:4000});
-                    //    //return throwError(error); 
-                       
-                    // }
+                
                 }
                 next
                 return of(err);

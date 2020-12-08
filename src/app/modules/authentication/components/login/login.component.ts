@@ -56,10 +56,6 @@ ngOnInit() {
     this.isLoading = false;
   }
 
-
-
-
-
 }
 
   redirect(){
