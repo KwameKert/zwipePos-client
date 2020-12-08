@@ -1,0 +1,132 @@
+<div class="card-box">
+ 
+        <form [formGroup]="commissionForm" class="needs-validation" (ngSubmit)="computeCommission(commissionForm.value)">
+            <div class="row">
+            <div class="col-3">
+            <div
+            class="form-group-custom"
+
+            [ngClass]="{
+              'has-error':
+                commissionForm.get('userId').touched && !commissionForm.get('userId').valid
+            }"
+          >
+            <label for="users">User</label>
+
+            <!-- <select
+                name="userId"
+                formControlName="userId"
+                class="form-control"
+                required
+                >
+            
+  <option *ngFor="let user of users" 
+  [value]="user.id"  >{{user.fullName}}</option>
+</select> -->
+            <ng-select formControlName="userId">
+                <ng-option *ngFor="let user of users" [value]="user.id">{{user.fullName}}</ng-option>
+             </ng-select>
+           
+            <span
+              class="error"
+              *ngIf="
+                commissionForm.get('userId').touched && !commissionForm.get('userId').valid
+              "
+            >
+              username is required
+            </span>
+          </div>
+        </div>
+        <div class="col-3">
+            <div
+            class="form-group-custom"
+            [ngClass]="{
+              'has-error':
+                commissionForm.get('startDate').touched && !commissionForm.get('startDate').valid
+            }"
+          >
+            <label for="name">Start Date</label>
+            <input type="date" class="form-control" formControlName="startDate" />
+            <span
+              class="error"
+              *ngIf="
+                commissionForm.get('startDate').touched && !commissionForm.get('startDate').valid
+              "
+            >
+              start date is required
+            </span>
+          </div>
+        </div>
+        <div class="col-3">
+            <div
+            class="form-group-custom"
+            [ngClass]="{
+              'has-error':
+                commissionForm.get('endDate').touched && !commissionForm.get('endDate').valid
+            }"
+          >
+            <label for="name">End Date</label>
+            <input type="date" class="form-control" formControlName="endDate" />
+            <span
+              class="error"
+              *ngIf="
+                commissionForm.get('endDate').touched && !commissionForm.get('endDate').valid
+              "
+            >
+              end date is required
+            </span>
+          </div>
+        </div>
+        <div class="col-3">
+            <button
+            type="submit"
+            class="btn btn-success waves-effect waves-light mt-3 btn-block "
+            [disabled]="!commissionForm.valid"
+            >
+            <i class=" fas fa-calculator"></i> Calculate
+            </button>
+        </div>
+
+    </div>
+  
+    </form>
+ 
+</div>
+
+
+<div class="row">
+    <div class="col-8">
+        <div class="card-box">
+            <h4>Receipts Lists</h4>
+            <table class="table  table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Amount</th>
+                        <th>Profit</th>
+                        <th>Created On</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let receipt of receipts">
+                       <td> {{receipt.id}}</td>
+                       <td> {{receipt.amount}}</td>
+                       <td> {{receipt.totalProfit}}</td>
+                       <td> {{receipt.createdAt | dateAgo}}</td>
+                       <td>
+                           <a href="javascript:void(0)" (click)="viewReceipt(receipt.id)">
+                        <i class="fas fa-info info"></i>
+                      </a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card-box ">
+            <h4>Total Commission (₵)</h4>
+            <p class="display-4 text-center">{{amount | currency: " "}}</p>  
+        </div>
+    </div>
+</div>

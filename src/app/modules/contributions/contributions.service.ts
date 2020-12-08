@@ -17,4 +17,8 @@ export class ContributionsService {
     return this._httpClient.post<ApiResponse<any>>(`${this._url}/transaction/tithe`, data).toPromise();
   }
 
+  computeCommission(data: any){
+    return this._httpClient.post<ApiResponse<any>>(`${this._url}/transaction/commission`, data).toPromise();
+  }
+
 }

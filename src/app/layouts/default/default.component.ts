@@ -24,6 +24,7 @@ export class DefaultComponent implements OnInit {
     {name: "Cash Register", icon: " fas fa-cash-register mr-1", url: "/merchant/cash-register"},
     {name: "Tithe", icon: "  fas fa-church", url: "/merchant/tithe"},
     {name: "Users", icon: "  fas fa-users-cog", url: "/merchant/users"},
+    {name: "Commission", icon: " fas fa-money-bill", url: "/merchant/commission"},
 
   ];
   breadcrumbConfig: object = {

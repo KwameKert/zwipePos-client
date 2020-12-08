@@ -9,6 +9,7 @@ import { ShopingCartComponent } from 'src/app/modules/cash-register/components/s
 import { ReceiptListComponent } from 'src/app/modules/cash-register/components/receipt-list/receipt-list.component';
 import { TitheComponent } from 'src/app/modules/contributions/tithe/tithe.component';
 import { ListUsersComponent } from 'src/app/modules/user/components/list-users/list-users.component';
+import { CommissionComponent } from 'src/app/modules/contributions/commission/commission.component';
 
 
 const routes: Routes = [
@@ -114,6 +115,23 @@ const routes: Routes = [
         },
         {
           label: 'users',
+          url: ''
+        }
+      ]
+    },
+  },
+  {
+    path: 'commission',
+    component: CommissionComponent,
+    data: {
+      title: 'commission',
+      breadcrumb: [
+        {
+          label: 'home',
+          url: '/merchant/dashboard'
+        },
+        {
+          label: 'commission',
           url: ''
         }
       ]

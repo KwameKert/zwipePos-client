@@ -23,7 +23,7 @@ export class TitheComponent implements OnInit {
 
   loadForm(){
     this.titheForm = this.fb.group({
-      shopId: 35,
+      shopId: this.shopId,
       startDate: new FormControl('', Validators.required),
       endDate: new FormControl('', Validators.required),
       percentage: new FormControl('', Validators.required)
