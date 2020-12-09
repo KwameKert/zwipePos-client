@@ -33,6 +33,7 @@ export class AuthService {
   }
 
   login(data: object) {
+    this.logout();
     return this._httpClient.post<ApiResponse<any>>(`${this._baseUrl}/auth/login`, data)
         .pipe(map(data => {
             //console.log(data);
