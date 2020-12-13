@@ -1,49 +1,7 @@
 <app-preloader *ngIf="isLoading; else elseBlock"></app-preloader>
 
 <ng-template #elseBlock>
-
-<!-- <div class="login-background ">
-
-    <div class="row  justify-content-center" >
-     
-      <div class="col-md-4 col-sm-12  mt-5">
-          <mat-card class="example-card">
-              <mat-card-header class="justify-content-center">
-                <mat-card-title class="text-center">Login</mat-card-title>
-              </mat-card-header>
-          
-              <mat-card-content>
-                
-                  <form class="text-center" [formGroup]="loginForm" (ngSubmit)="loginUser()">
   
-                      <mat-form-field appearance="outline" style="width:300px"  >
-                          <mat-label>Username</mat-label>
-                          <input matInput placeholder="kwamekert"  formControlName="username" >
-                          <mat-error *ngIf="loginForm.get('username').invalid"> Invalid input </mat-error>
-                        </mat-form-field>
-  
-                        <mat-form-field appearance="outline" style="width:300px"  >
-                          <mat-label>Password</mat-label>
-                          <input matInput placeholder="kwamekert"  formControlName="password" type="password" >
-                          <mat-error *ngIf="loginForm.get('password').invalid"> Invalid input </mat-error>
-                        </mat-form-field>
-                    <div align="center">
-                      <button type="submit" class="btn btn-primary btn-block btn-sm"  style="width:230px">Login</button>
-                    </div>
-                       
-                    </form>
-                  
-                
-              </mat-card-content>
-            
-            </mat-card>
-      </div>
-  
-  </div>  
-  
- 
-  
-  </div> -->
 
   <div class="auth-fluid">
     <!--Auth fluid left content -->
@@ -55,7 +13,7 @@
              
 
                 <!-- title-->
-                <h2 class="text-center">Zwipe</h2>
+                <h2 class="text-center">Evolve IMS</h2>
                 <h4 class="mt-0">Sign In</h4>
                 <p class="text-muted mb-4">Enter your username and password to access account.</p>
 
@@ -87,21 +45,7 @@
             </div> <!-- end .card-body -->
         </div> <!-- end .align-items-center.d-flex.h-100-->
     </div>
-    <!-- end auth-fluid-form-box-->
-
-    <!-- Auth fluid right content -->
-    <!-- <div class="auth-fluid-right text-center">
-        <div class="auth-user-testimonial">
-            <h2 class="mb-3 text-white">I love the color!</h2>
-            <p class="lead"><i class="mdi mdi-format-quote-open"></i> I've been using your theme from the previous developer for our web app, once I knew new version is out, I immediately bought with no hesitation. Great themes, good documentation with lots of customization available and sample app that really fit our need. <i class="mdi mdi-format-quote-close"></i>
-            </p>
-            <h5 class="text-white">
-                - Fadlisaad (Ubold Admin User)
-            </h5>
-        </div> 
-    </div> -->
-
-    <!-- end Auth fluid right content -->
+ 
 </div>
 
 </ng-template>
