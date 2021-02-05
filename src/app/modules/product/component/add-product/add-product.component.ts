@@ -16,6 +16,7 @@ export class AddProductComponent implements OnInit {
   productForm: FormGroup;
   
   categories: any ;
+  units: any;
   isEmpty = false;
   isLoading = false;
   shopId: number = JSON.parse(localStorage.getItem('shop')).id 
@@ -35,6 +36,7 @@ export class AddProductComponent implements OnInit {
         description: '',
         status: new FormControl('', Validators.required),
         shopId: this.shopId,
+        unitId: '',
         sellingPrice: new FormControl('', Validators.required),
         costPrice: new FormControl('', Validators.required),
         categoryId: new FormControl('', Validators.required),
@@ -51,6 +53,7 @@ export class AddProductComponent implements OnInit {
   loadEditForm(data: Product){
     this.productForm = this.fb.group({
       id: data.id,
+      unitId: data.unitId,
       name: new FormControl(data.name, Validators.required),
       description: data.description,
       status: new FormControl(data.status, Validators.required),
@@ -104,6 +107,7 @@ export class AddProductComponent implements OnInit {
     }else{
       this.loadForm();
     }
+    this.fetchUnits();
    //   console.log(this.categories)
    
     }else{
@@ -117,5 +121,21 @@ export class AddProductComponent implements OnInit {
   }
 }
 
+async fetchUnits(){
+  try{
+    this.isLoading  = true;
+    let response = await this.categoryService.fetchUnits();
+    if(response && response.data.length != 0){
+     this.units =  response.data;
+    }else{
+      this.isEmpty = true;
+    }
+
+  }catch(error){
+
+  }finally{
+    this.isLoading=false;
+  }
+}
 
 }

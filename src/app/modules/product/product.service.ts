@@ -13,6 +13,7 @@ export interface Product {
   status: String , 
   description: String, 
   shopId: String, 
+  unitId: number, 
   categoryId: number,
   categoryName: String, 
   createdAt: Date, 

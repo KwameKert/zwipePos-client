@@ -29,4 +29,8 @@ export class CategoryService  extends CrudService<Category>{
     return this._httpClient.get<ApiResponse<Category[]>>(`${this._url}/category/shop/${id}`).toPromise();
   }
 
+  fetchUnits(){
+    return this._httpClient.get<ApiResponse<Category[]>>(`${this._url}/unit/`).toPromise();
+  }
+
 }

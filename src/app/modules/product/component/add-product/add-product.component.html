@@ -54,7 +54,31 @@
 
  
 <div class="row">
-<div class="col-6">
+<div class="col-4">
+  <div
+  class="form-group-custom"
+  [ngClass]="{
+    'has-error':
+      productForm.get('unitId').touched &&
+      !productForm.get('unitId').valid
+  }"
+>
+  <label for="name">Unit</label>
+  <ng-select formControlName="unitId">
+    <ng-option *ngFor="let unit of units" [value]="unit.id">{{unit.name}}</ng-option>
+ </ng-select>  <span
+    class="error"
+    *ngIf="
+      productForm.get('unitId').touched &&
+      !productForm.get('unitId').valid
+    "
+  >
+    unit is required
+  </span>
+</div>
+</div>
+
+<div class="col-4">
   <div
   class="form-group-custom"
   [ngClass]="{
@@ -76,7 +100,7 @@
   </span>
 </div>
 </div>
-<div class="col-6">
+<div class="col-4">
   <div
     class="form-group-custom"
     [ngClass]="{

@@ -37,7 +37,6 @@ export class AddCategoryComponent implements OnInit {
         status: new FormControl('', Validators.required),
         shopId: this.shopId
       })
-
   }
 
   loadEditForm(data: Category){
