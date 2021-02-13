@@ -21,4 +21,16 @@ export class ContributionsService {
     return this._httpClient.post<ApiResponse<any>>(`${this._url}/transaction/commission`, data).toPromise();
   }
 
+  getTithePercentage(){
+    return this._httpClient.get<ApiResponse<any>>(`${this._url}/config/tithe`).toPromise();
+  }
+  getTitheHistory(){
+    return this._httpClient.get<ApiResponse<any>>(`${this._url}/config/tithe_history`).toPromise();
+  }
+
+  updateTitheConfig(data: any){
+    return this._httpClient.post<ApiResponse<any>>(`${this._url}/config/tithe`, data).toPromise();
+
+  }
+
 }

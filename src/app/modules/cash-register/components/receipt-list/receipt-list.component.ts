@@ -14,7 +14,7 @@ import { ViewReceiptComponent } from '../view-receipt/view-receipt.component';
 export class ReceiptListComponent implements OnInit {
 
   shop = JSON.parse(localStorage.getItem("shop"));
-  displayedColumns: Array<string> = ['code','amount', 'profit','customerName','createdAt', 'customerPhone', 'actions'];
+  displayedColumns: Array<string> = ['code','amount', 'profit','tithe','customerName','createdAt', 'customerPhone', 'actions'];
   dataSource: MatTableDataSource<any> = null ;
   receipts: any;
   isEmpty = false;

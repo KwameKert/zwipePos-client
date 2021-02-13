@@ -82,6 +82,14 @@
                     {{ element.totalProfit | currency: " " }}
                   </td>
                 </ng-container>
+                <ng-container matColumnDef="tithe">
+                  <th class="border-top-0" mat-header-cell *matHeaderCellDef>
+                    Tithe
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.tithe | currency: " " }}
+                  </td>
+                </ng-container>
   
              
   
