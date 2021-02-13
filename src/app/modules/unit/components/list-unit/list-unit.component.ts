@@ -13,7 +13,7 @@ import { AddUnitComponent } from '../add-unit/add-unit.component';
 })
 export class ListUnitComponent implements OnInit {
 
-  displayedColumns: Array<string> = ['name','status','createdAt', 'actions'];
+  displayedColumns: Array<string> = ['id','name','stat','createdAt', 'actions'];
   dataSource: MatTableDataSource<any> ;
   categories: any;
   isEmpty = false;
@@ -45,7 +45,7 @@ export class ListUnitComponent implements OnInit {
         this.isLoading  = true;
         let response = await this.unitService.fetchAll();
         if(response && response.data.length != 0){
-          console.log(response.data)
+       //   console.log(response.data)
           this.dataSource = new MatTableDataSource(response.data);
        //   console.log(this.dataSource)
           this.dataSource.paginator = this.paginator;
@@ -67,7 +67,7 @@ export class ListUnitComponent implements OnInit {
   editUnit(data: any){
     const dialogRef = this.dialog.open(AddUnitComponent, {
       width: '400px',
-      height: '420px',
+      height: '300px',
       data
     })
     dialogRef.afterClosed().subscribe(result => {
@@ -81,10 +81,10 @@ export class ListUnitComponent implements OnInit {
     });
   }
 
-  addCategory(data: any){
+  addUnit(data: any){
     const dialogRef = this.dialog.open(AddUnitComponent, {
       width: '400px',
-      height: '420px'
+      height: '300px'
     })
     dialogRef.afterClosed().subscribe(result => {
       if(result.success){
@@ -98,9 +98,9 @@ export class ListUnitComponent implements OnInit {
   }
 
 
-  deleteCategory(_id: Number){
+  deleteUnit(_id: Number){
     let data = {
-    model: "category", _id, word: "DELETe category"
+    model: "unit", _id, word: "DELETe unit"
     }
     const dialogRef = this.dialog.open(DeleteItemComponent, {
       width: '550px',

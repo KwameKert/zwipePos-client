@@ -51,7 +51,7 @@ export class ListCategoryComponent implements OnInit {
         this.isLoading  = true;
         let response = await this.categoryService.fetchCategories(this.shop.id);
         if(response && response.data.length != 0){
-          console.log(response.data)
+       //   console.log(response.data)
           this.dataSource = new MatTableDataSource(response.data);
        //   console.log(this.dataSource)
           this.dataSource.paginator = this.paginator;

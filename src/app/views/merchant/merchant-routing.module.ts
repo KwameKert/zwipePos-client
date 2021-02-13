@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { AddCategoryComponent } from 'src/app/modules/category/components/add-category/add-category.component';
 import { MerchantComponent } from 'src/app/modules/dashboard/components/merchant/merchant.component';
 import { ListCategoryComponent } from 'src/app/modules/category/components/list-category/list-category.component';
 import { ListProductComponent } from 'src/app/modules/product/component/list-product/list-product.component';
@@ -10,6 +8,7 @@ import { ReceiptListComponent } from 'src/app/modules/cash-register/components/r
 import { TitheComponent } from 'src/app/modules/contributions/tithe/tithe.component';
 import { ListUsersComponent } from 'src/app/modules/user/components/list-users/list-users.component';
 import { CommissionComponent } from 'src/app/modules/contributions/commission/commission.component';
+import { ListUnitComponent } from 'src/app/modules/unit/components/list-unit/list-unit.component';
 
 
 const routes: Routes = [
@@ -132,6 +131,23 @@ const routes: Routes = [
         },
         {
           label: 'commission',
+          url: ''
+        }
+      ]
+    },
+  },
+  {
+    path: 'unit',
+    component: ListUnitComponent,
+    data: {
+      title: 'unit',
+      breadcrumb: [
+        {
+          label: 'home',
+          url: '/merchant/dashboard'
+        },
+        {
+          label: 'unit',
           url: ''
         }
       ]

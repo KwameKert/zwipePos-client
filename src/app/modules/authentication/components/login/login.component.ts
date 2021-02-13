@@ -33,7 +33,7 @@ ngOnInit() {
   try{
     let response = await  this._authService.login(this.loginForm.value);
     if(response){
-      console.log(response)
+      //console.log(response)
         let user = response.user;
         switch(user.role){
             case "ADMIN":

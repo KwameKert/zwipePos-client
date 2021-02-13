@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { CrudService } from '../shared/service';
 
 export interface Unit {
+  id: Number;
   name: String, 
   stat: String,
   createdAt:  Date
@@ -15,6 +16,6 @@ export class UnitService extends CrudService<Unit> {
 
   private _url :String = environment.api_host;
   constructor(public _httpClient: HttpClient) { 
-    super(_httpClient, "category")
+    super(_httpClient, "unit")
   }
 }
