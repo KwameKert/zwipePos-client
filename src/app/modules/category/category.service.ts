@@ -5,7 +5,6 @@ import { environment } from 'src/environments/environment';
 import { CrudService } from '../shared/service';
 
 export interface Category{
-
   name: String, 
   description: String, 
   status: String,

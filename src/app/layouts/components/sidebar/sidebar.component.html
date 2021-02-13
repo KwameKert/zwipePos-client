@@ -2,14 +2,36 @@
     <div class="container-fluid">
       <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
         <div class="collapse navbar-collapse" id="topnav-menu-content">
-          <ul class="navbar-nav">
-
-            <li class="nav-item" *ngFor="let link of data">
-              <a  [routerLink]="[link.url]" (click)="updateTitle(link.name)" class="nav-link"  > 
-                  <i [class]="link.icon"></i>{{ link.name | titlecase}} 
-                </a>
-
-            </li>
+          <ul class="navbar-nav" >
+            <div *ngFor="let link of data">
+              <li class="nav-item" *ngIf="!link.links; else has_submenu" >
+                <a  [routerLink]="[link.url]" (click)="updateTitle(link.name)" class="nav-link"  > 
+                    <i [class]="link.icon"></i>{{ link.name | titlecase}} 
+                  </a>
+              </li>
+              
+                          <ng-template #has_submenu>
+                            <li class="nav-item dropdown">
+                              <a
+                              class="nav-link dropdown-toggle arrow-none"
+                              href="#"
+                              id="topnav-dashboard"
+                              role="button"
+                              data-toggle="dropdown"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                            >
+                              <i class="fe-airplay mr-1"></i> {{link.name}}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
+                              <a [routerLink]="[subLink.url]" (click)="updateTitle(subLink.name)" class="dropdown-item"
+                               *ngFor="let subLink of link.links">{{subLink.name}}</a>
+                              </div>
+                          </li>
+              
+                          </ng-template> 
+            </div>
+            
          
           </ul>
           <!-- end navbar-->
