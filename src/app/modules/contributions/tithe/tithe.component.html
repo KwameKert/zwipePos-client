@@ -157,21 +157,21 @@
               </ng-container>
               <ng-container matColumnDef="percentage">
                 <th class="border-top-0" mat-header-cell *matHeaderCellDef>
-                  Percentage Then
+                  Percentage Then (%)
                 </th>
                 <td mat-cell *matCellDef="let element">
                  
-                    {{ element.percentage }}
+                    {{ element.percentage *100 }}
                 
                 </td>
               </ng-container>
               <ng-container matColumnDef="amount">
                 <th class="border-top-0" mat-header-cell *matHeaderCellDef>
-                  Amount
+                  Amount  (₵)
                 </th>
                 <td mat-cell *matCellDef="let element">
                  
-                    {{ element.amount }}
+                    {{ element.amount | currency: ' ' }}
                 
                 </td>
               </ng-container>
