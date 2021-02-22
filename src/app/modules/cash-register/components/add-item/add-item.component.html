@@ -8,9 +8,10 @@
          </ng-select>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" >
         <label for="">Quantity</label>
-        <input type="number" class="form-control" [(ngModel)]="quantity">
+        <input type="number" class="form-control" *ngIf="selectedProduct && selectedProduct.quantity != 0" [(ngModel)]="quantity" min="1" [max]="selectedProduct.quantity" onKeyDown="return false">
+        <p class="text-danger" *ngIf="selectedProduct && selectedProduct.quantity == 0"> Product out of stock</p>
     </div>
 </div>
 

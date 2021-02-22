@@ -49,12 +49,23 @@ export class ShopingCartComponent implements OnInit {
   addItemQuantity(index: number){
     
     let item = this.cart[index];
-    console.log("item here", item)
-    item.quantity +=1;
-    item.total = item.quantity * item.amount;
-    this.cart[index] = item;
-    console.log(this.cart)
-    this.updateGradTotal()
+    console.log(item)
+    let newQuantity = item.quantity + 1
+    console.log("beforeS: ",item)
+    console.log("new quantity: ",newQuantity)
+    console.log("old quantity: ",item.maxQuantity)
+    if(newQuantity  <= item.maxQuantity){
+      item.total = item.quantity * item.amount;
+      item.quantity = newQuantity;
+      this.cart[index] = item;
+      console.log(this.cart)
+      this.updateGradTotal();
+    }else{
+      console.log("after: ",item)
+      console.log("exceeded number")
+    }
+    
+    
   //  console.log(this.cart)
   }
 

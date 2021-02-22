@@ -50,6 +50,7 @@ export class AddItemComponent implements OnInit {
         productName: this.selectedProduct.name,
         amount: this.selectedProduct.sellingPrice,
         productId: this.selectedProduct.id,
+        maxQuantity: this.selectedProduct.quantity,
         quantity: this.quantity,
         total: this.quantity * this.selectedProduct.sellingPrice
       }
